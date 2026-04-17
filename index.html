@@ -126,19 +126,39 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
   </div>
 
   <table class="data-table">
-    <thead><tr><th>KPI</th><th style="text-align:left">Definition</th><th>Nov 25</th><th>Dec 25</th><th>Jan 26</th><th>Feb 26</th><th>Target</th><th>Status</th></tr></thead>
-    <tbody>
-      <tr><td>Inventory Turnover (ann.)</td><td class="kpi-def">Measures how many times the total inventory is sold and replenished within a year. A higher rate indicates stronger sales velocity relative to stock held.</td><td>5.3x</td><td>4.8x</td><td>19.4x</td><td>18.6x</td><td>4-6x</td><td style="text-align:center"><span class="status-warn">Building</span></td></tr>
-      <tr><td>Days Sales of Inventory</td><td class="kpi-def">The number of days of stock on hand at the current rate of sales. A lower figure means inventory converts to cash faster. High DSI indicates capital is tied up in stock.</td><td>19 days</td><td>6 days</td><td>108 days</td><td>51 days</td><td>30-60 days</td><td style="text-align:center"><span class="status-warn">Monitor</span></td></tr>
-      <tr><td>GMROI</td><td class="kpi-def">Gross Margin Return on Inventory Investment. Measures the gross profit generated per rand of average inventory held. A ratio above 1.0x means inventory earns more than it costs to hold.</td><td class="neg">-0.06x</td><td>0.34x</td><td class="pos">0.53x</td><td>0.13x</td><td>&gt;1.0x</td><td style="text-align:center"><span class="status-warn">Improving</span></td></tr>
-      <tr><td>Stock-to-Sales Ratio</td><td class="kpi-def">Closing inventory divided by monthly revenue. Indicates how much stock is being held relative to what is being sold. A declining ratio over time signals improving efficiency.</td><td>3.37x</td><td>2.71x</td><td>1.09x</td><td>3.75x</td><td>0.5-2.0x</td><td style="text-align:center"><span class="status-warn">High</span></td></tr>
-      <tr><td>Avg COGS per Box Sold</td><td class="kpi-def">Total cost of goods sold divided by total boxes sold for the month. Tracks the average cost to produce and deliver one box.</td><td>R602</td><td>R76</td><td>R213</td><td>R211</td><td></td><td></td></tr>
-      <tr><td>Revenue per Box Sold</td><td class="kpi-def">Total revenue divided by total boxes sold. Reflects the blended average selling price across 30-pack and 15-pack SKUs.</td><td>R530</td><td>R405</td><td>R393</td><td>R381</td><td>R380-430</td><td style="text-align:center"><span class="status-good">On track</span></td></tr>
-    </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th>KPI</th>
+      <th style="text-align:left">Definition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Inventory Turnover (ann.)</td>
+      <td class="kpi-def">Measures how many times the total inventory is sold and replenished within a year. A higher rate indicates stronger sales velocity relative to stock held.</td>
+    </tr>
+    <tr>
+      <td>Days Sales of Inventory</td>
+      <td class="kpi-def">The number of days of stock on hand at the current rate of sales. A lower figure means inventory converts to cash faster. High DSI indicates capital is tied up in stock.</td>
+    </tr>
+    <tr>
+      <td>GMROI</td>
+      <td class="kpi-def">Gross Margin Return on Inventory Investment. Measures the gross profit generated per rand of average inventory held. A ratio above 1.0x means inventory earns more than it costs to hold.</td>
+    </tr>
+    <tr>
+      <td>Stock-to-Sales Ratio</td>
+      <td class="kpi-def">Closing inventory divided by monthly revenue. Indicates how much stock is being held relative to what is being sold. A declining ratio over time signals improving efficiency.</td>
+    </tr>
+    <tr>
+      <td>Avg COGS per Box Sold</td>
+      <td class="kpi-def">Total cost of goods sold divided by total boxes sold for the month. Tracks the average cost to produce and deliver one box.</td>
+    </tr>
+    <tr>
+  </tbody>
+</table>
 
   <div class="sec-hdr"><h2>Cash Position</h2><span class="sec-badge">LIQUIDITY</span></div>
-  <div class="sec-commentary">January's R215k peak reflects receipt of the large Arcadia reseller payment. February's closing cash of R147k reflects subsequent inventory purchases. Cash coverage relative to monthly operating expenses remained above two months throughout the FY26 period.</div>
+  <div class="sec-commentary">January's R215k peak reflects receipt of the large Arcadia reseller payment. February's closing cash of R147k reflects subsequent inventory purchases. Cash coverage relative to monthly operating expenses remained above two months throughout the FY26 period. An assumption of 110 boxes per month given away for marketing purposes has been applied in both the FY26 and March 2026 KPIs tabs.</div>
   <div class="chart-grid-2">
     <div class="chart-card"><h3>Cash and Bank Balance</h3><div class="chart-sub">Closing balance across all bank accounts at month end (ZAR)</div><canvas id="fy_cash_line"></canvas></div>
     <div class="chart-card"><h3>Net Cash from Operations</h3><div class="chart-sub">Cash generated from trading activities each month (ZAR)</div><canvas id="fy_cf_bar"></canvas></div>
@@ -270,7 +290,7 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
   </div>
 
   <div class="sec-hdr"><h2>5-Month Revenue Trend</h2><span class="sec-badge">SALES</span></div>
-  <div class="sec-commentary">March (R128k) and February (R126k) revenue are closely aligned, confirming a baseline monthly run-rate of approximately R120-130k is establishing itself. Takealot is now the second largest channel at R58.9k in March. January's R353k remains a non-recurring outlier and should be assessed separately when evaluating the underlying revenue trajectory.</div>
+  <div class="sec-commentary">March (R128k) and February (R126k) revenue are closely aligned, confirming a baseline monthly run-rate of approximately R120-130k is establishing itself. Takealot is now the second largest channel at R58.9k in March. January's R353k remains a non-recurring outlier and should be assessed separately when evaluating the underlying revenue trajectory. An assumption of 110 boxes per month given away for marketing purposes has been applied in both the FY26 and March 2026 KPIs tabs.</div>
   <div class="chart-grid-2">
     <div class="chart-card"><h3>Revenue by Month (5 Months)</h3><div class="chart-sub">Nov 25 to Mar 26 (ZAR)</div><canvas id="mar_rev_bar"></canvas></div>
     <div class="chart-card"><h3>Revenue by Channel</h3><div class="chart-sub">Channel contribution each month (stacked)</div><canvas id="mar_rev_channel"></canvas></div>
@@ -294,16 +314,37 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
     <div class="chart-card"><h3>GMROI</h3><div class="chart-sub">Gross profit per rand of average inventory. Target: above 1.0x</div><canvas id="mar_gmroi_chart"></canvas></div>
   </div>
 
-  <table class="data-table">
-    <thead><tr><th>KPI</th><th style="text-align:left">Definition</th><th>Nov 25</th><th>Dec 25</th><th>Jan 26</th><th>Feb 26</th><th>Mar 26</th><th>Target</th></tr></thead>
-    <tbody>
-      <tr><td>Inventory Turnover (ann.)</td><td class="kpi-def">How many times total inventory is sold and replenished in a year. Annualised from monthly COGS and average inventory.</td><td>5.6x</td><td>0.9x</td><td>7.5x</td><td>2.0x</td><td>1.3x</td><td>4-6x</td></tr>
-      <tr><td>Days Sales of Inventory</td><td class="kpi-def">Days of stock remaining on hand at the current monthly sales rate. High DSI indicates inventory is building faster than it is being sold.</td><td>64</td><td>385</td><td>48</td><td>184</td><td>274</td><td>30-60 days</td></tr>
-      <tr><td>GMROI</td><td class="kpi-def">Gross profit generated per rand of average inventory held. March declined to 0.09x as the large powder purchase increased average inventory before being converted into sales.</td><td class="neg">-0.06x</td><td>0.34x</td><td class="pos">0.53x</td><td>0.13x</td><td>0.09x</td><td>&gt;1.0x</td></tr>
-      <tr><td>Stock-to-Sales Ratio</td><td class="kpi-def">Closing inventory divided by monthly revenue. March's 6.27x reflects the large inventory purchase relative to the current monthly revenue base.</td><td>3.37x</td><td>2.71x</td><td>1.09x</td><td>3.75x</td><td>6.27x</td><td>0.5-2.0x</td></tr>
-      <tr><td>Revenue per Box Sold</td><td class="kpi-def">Blended average revenue per box. The gradual decline from R530 to R326 reflects a growing proportion of 15-pack boxes (R239) in the sales mix.</td><td>R530</td><td>R405</td><td>R393</td><td>R381</td><td>R326</td><td>R380-430</td></tr>
-    </tbody>
-  </table>
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>KPI</th>
+      <th style="text-align:left">Definition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Inventory Turnover (ann.)</td>
+      <td class="kpi-def">Measures how many times the total inventory is sold and replenished within a year. A higher rate indicates stronger sales velocity relative to stock held.</td>
+    </tr>
+    <tr>
+      <td>Days Sales of Inventory</td>
+      <td class="kpi-def">The number of days of stock on hand at the current rate of sales. A lower figure means inventory converts to cash faster. High DSI indicates capital is tied up in stock.</td>
+    </tr>
+    <tr>
+      <td>GMROI</td>
+      <td class="kpi-def">Gross Margin Return on Inventory Investment. Measures the gross profit generated per rand of average inventory held. A ratio above 1.0x means inventory earns more than it costs to hold.</td>
+    </tr>
+    <tr>
+      <td>Stock-to-Sales Ratio</td>
+      <td class="kpi-def">Closing inventory divided by monthly revenue. Indicates how much stock is being held relative to what is being sold. A declining ratio over time signals improving efficiency.</td>
+    </tr>
+    <tr>
+      <td>Avg COGS per Box Sold</td>
+      <td class="kpi-def">Total cost of goods sold divided by total boxes sold for the month. Tracks the average cost to produce and deliver one box.</td>
+    </tr>
+    </tr>
+  </tbody>
+</table>
 
   <div class="sec-hdr"><h2>Cash Position</h2><span class="sec-badge">LIQUIDITY</span></div>
   <div class="sec-commentary">Cash decreased from R147k (February) to R51k (March), driven by the large electrolyte powder purchase (R220k investing outflow). R81k was received via intercompany funding, with the Functionalx balance increasing from R45k to R125k. Converting the inventory build into revenue is the primary driver of cash recovery in the coming months.</div>
