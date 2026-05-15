@@ -116,10 +116,12 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
   .sec-commentary{padding:8px 12px;font-size:10.5px;margin-bottom:10px;page-break-inside:avoid;page-break-after:avoid}
 
   .chart-grid-2,.chart-grid-3{gap:10px;margin-bottom:10px}
+  .chart-grid-2{display:grid !important;grid-template-columns:1fr 1fr !important}
+  .chart-grid-3{display:grid !important;grid-template-columns:1fr 1fr 1fr !important}
   .chart-card{padding:10px;box-shadow:none;border:1px solid var(--lgrey);page-break-inside:avoid}
   .chart-card h3{font-size:10px}
   .chart-card .chart-sub{font-size:9px;margin-bottom:8px}
-  .chart-card canvas{max-height:170px !important}
+  .chart-card canvas{max-height:170px !important;width:100% !important;height:auto !important}
 
   .data-table{margin-bottom:10px}
   .data-table th{padding:7px 10px;font-size:9px}
@@ -909,6 +911,19 @@ function buildOpCashChart(canvasId, labels, sliceCount) {
   });
 }
 
+// ===== Force all tabs visible briefly so every canvas has real dimensions =====
+// Chart.js needs non-zero canvas size at creation. Hidden tabs have display:none and
+// would produce blank charts. We temporarily make every tab laid out (but invisible)
+// so charts render correctly, then restore the single-tab view.
+const allTabs = document.querySelectorAll('.tab-content');
+allTabs.forEach(t => {
+  t.style.display = 'block';
+  t.style.visibility = 'hidden';
+  t.style.position = 'absolute';
+  t.style.left = '-9999px';
+  t.style.width = '1340px'; // match max content width so charts size correctly
+});
+
 // ===== Build April KPI tab charts (all 6 months) =====
 buildRevMonthChart('aprRevMonth', monthsFull, rev.full);
 buildChannelChart('aprRevChannel', monthsFull, 6);
@@ -948,21 +963,24 @@ buildGmroiChart('fyGmroi', monthsFY, 4);
 buildCashChart('fyCash', monthsFY, 4);
 buildOpCashChart('fyOpCash', monthsFY, 4);
 
-// ===== Print handling: force all charts to render at full size before print =====
+// ===== Restore original tab visibility now that all charts have rendered =====
+allTabs.forEach(t => {
+  t.style.display = '';
+  t.style.visibility = '';
+  t.style.position = '';
+  t.style.left = '';
+  t.style.width = '';
+});
+
+// ===== Print handling: ensure all charts redraw at print size =====
 window.addEventListener('beforeprint', () => {
-  // Reveal all tabs so charts inside them have non-zero dimensions
-  document.querySelectorAll('.tab-content').forEach(c => c.classList.add('active'));
-  // Resize all Chart.js instances so they render properly in print
+  // CSS handles revealing all tabs for print; we just nudge Chart.js to redraw
   Object.values(Chart.instances).forEach(chart => {
     chart.resize();
     chart.update('none');
   });
 });
 window.addEventListener('afterprint', () => {
-  // Restore single-tab view
-  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-  const activeBtn = document.querySelector('.tab-btn.active');
-  if (activeBtn) document.getElementById(activeBtn.dataset.tab).classList.add('active');
   Object.values(Chart.instances).forEach(chart => chart.resize());
 });
 </script>
