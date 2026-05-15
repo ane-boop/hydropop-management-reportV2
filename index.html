@@ -911,78 +911,143 @@ function buildOpCashChart(canvasId, labels, sliceCount) {
   });
 }
 
-// ===== Force all tabs visible briefly so every canvas has real dimensions =====
-// Chart.js needs non-zero canvas size at creation. Hidden tabs have display:none and
-// would produce blank charts. We temporarily make every tab laid out (but invisible)
-// so charts render correctly, then restore the single-tab view.
-const allTabs = document.querySelectorAll('.tab-content');
-allTabs.forEach(t => {
-  t.style.display = 'block';
-  t.style.visibility = 'hidden';
-  t.style.position = 'absolute';
-  t.style.left = '-9999px';
-  t.style.width = '1340px'; // match max content width so charts size correctly
+// ===== Chart registry: store config for each chart so we can rebuild on print =====
+const chartRegistry = [];
+function registerAndBuild(canvasId, builder) {
+  chartRegistry.push({canvasId, builder});
+  // Initial build only for currently visible tab (April KPIs)
+  const canvas = document.getElementById(canvasId);
+  if (canvas && canvas.offsetParent !== null) {
+    builder(canvasId);
+  }
+}
+
+// Register builders for every chart
+registerAndBuild('aprRevMonth', id => buildRevMonthChart(id, monthsFull, rev.full));
+registerAndBuild('aprRevChannel', id => buildChannelChart(id, monthsFull, 6));
+registerAndBuild('aprGpNp', id => buildGpNpChart(id, monthsFull, 6));
+registerAndBuild('aprGpMargin', id => buildGpMarginChart(id, monthsFull, 6));
+registerAndBuild('aprInvCat', id => buildInvCatChart(id, monthsFull, 6));
+registerAndBuild('aprBoxes', id => buildBoxesChart(id, monthsFull, 6));
+registerAndBuild('aprTurnover', id => buildTurnoverChart(id, monthsFull, 6));
+registerAndBuild('aprDsi', id => buildDsiChart(id, monthsFull, 6));
+registerAndBuild('aprGmroi', id => buildGmroiChart(id, monthsFull, 6));
+registerAndBuild('aprCash', id => buildCashChart(id, monthsFull, 6));
+registerAndBuild('aprOpCash', id => buildOpCashChart(id, monthsFull, 6));
+
+registerAndBuild('marRevMonth', id => buildRevMonthChart(id, monthsToMar, rev.toMar));
+registerAndBuild('marRevChannel', id => buildChannelChart(id, monthsToMar, 5));
+registerAndBuild('marGpNp', id => buildGpNpChart(id, monthsToMar, 5));
+registerAndBuild('marGpMargin', id => buildGpMarginChart(id, monthsToMar, 5));
+registerAndBuild('marInvCat', id => buildInvCatChart(id, monthsToMar, 5));
+registerAndBuild('marBoxes', id => buildBoxesChart(id, monthsToMar, 5));
+registerAndBuild('marTurnover', id => buildTurnoverChart(id, monthsToMar, 5));
+registerAndBuild('marDsi', id => buildDsiChart(id, monthsToMar, 5));
+registerAndBuild('marGmroi', id => buildGmroiChart(id, monthsToMar, 5));
+registerAndBuild('marCash', id => buildCashChart(id, monthsToMar, 5));
+registerAndBuild('marOpCash', id => buildOpCashChart(id, monthsToMar, 5));
+
+registerAndBuild('fyRevMonth', id => buildRevMonthChart(id, monthsFY, rev.fy));
+registerAndBuild('fyRevChannel', id => buildChannelChart(id, monthsFY, 4));
+registerAndBuild('fyGpNp', id => buildGpNpChart(id, monthsFY, 4));
+registerAndBuild('fyGpMargin', id => buildGpMarginChart(id, monthsFY, 4));
+registerAndBuild('fyInvCat', id => buildInvCatChart(id, monthsFY, 4));
+registerAndBuild('fyBoxes', id => buildBoxesChart(id, monthsFY, 4));
+registerAndBuild('fyTurnover', id => buildTurnoverChart(id, monthsFY, 4));
+registerAndBuild('fyDsi', id => buildDsiChart(id, monthsFY, 4));
+registerAndBuild('fyGmroi', id => buildGmroiChart(id, monthsFY, 4));
+registerAndBuild('fyCash', id => buildCashChart(id, monthsFY, 4));
+registerAndBuild('fyOpCash', id => buildOpCashChart(id, monthsFY, 4));
+
+// ===== Build charts for a tab when it becomes visible (lazy build on tab click) =====
+function buildChartsInTab(tabId) {
+  chartRegistry.forEach(({canvasId, builder}) => {
+    if (canvasId.startsWith(tabId.split('-')[0])) {
+      const canvas = document.getElementById(canvasId);
+      if (canvas && !Chart.getChart(canvas)) {
+        builder(canvasId);
+      }
+    }
+  });
+}
+
+// Hook tab clicks to lazy-build charts
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.tab;
+    setTimeout(() => buildChartsInTab(target), 50);
+  });
 });
 
-// ===== Build April KPI tab charts (all 6 months) =====
-buildRevMonthChart('aprRevMonth', monthsFull, rev.full);
-buildChannelChart('aprRevChannel', monthsFull, 6);
-buildGpNpChart('aprGpNp', monthsFull, 6);
-buildGpMarginChart('aprGpMargin', monthsFull, 6);
-buildInvCatChart('aprInvCat', monthsFull, 6);
-buildBoxesChart('aprBoxes', monthsFull, 6);
-buildTurnoverChart('aprTurnover', monthsFull, 6);
-buildDsiChart('aprDsi', monthsFull, 6);
-buildGmroiChart('aprGmroi', monthsFull, 6);
-buildCashChart('aprCash', monthsFull, 6);
-buildOpCashChart('aprOpCash', monthsFull, 6);
-
-// ===== Build March KPI tab charts (5 months: Nov-Mar) =====
-buildRevMonthChart('marRevMonth', monthsToMar, rev.toMar);
-buildChannelChart('marRevChannel', monthsToMar, 5);
-buildGpNpChart('marGpNp', monthsToMar, 5);
-buildGpMarginChart('marGpMargin', monthsToMar, 5);
-buildInvCatChart('marInvCat', monthsToMar, 5);
-buildBoxesChart('marBoxes', monthsToMar, 5);
-buildTurnoverChart('marTurnover', monthsToMar, 5);
-buildDsiChart('marDsi', monthsToMar, 5);
-buildGmroiChart('marGmroi', monthsToMar, 5);
-buildCashChart('marCash', monthsToMar, 5);
-buildOpCashChart('marOpCash', monthsToMar, 5);
-
-// ===== Build FY26 KPI tab charts (4 months: Nov-Feb only) =====
-buildRevMonthChart('fyRevMonth', monthsFY, rev.fy);
-buildChannelChart('fyRevChannel', monthsFY, 4);
-buildGpNpChart('fyGpNp', monthsFY, 4);
-buildGpMarginChart('fyGpMargin', monthsFY, 4);
-buildInvCatChart('fyInvCat', monthsFY, 4);
-buildBoxesChart('fyBoxes', monthsFY, 4);
-buildTurnoverChart('fyTurnover', monthsFY, 4);
-buildDsiChart('fyDsi', monthsFY, 4);
-buildGmroiChart('fyGmroi', monthsFY, 4);
-buildCashChart('fyCash', monthsFY, 4);
-buildOpCashChart('fyOpCash', monthsFY, 4);
-
-// ===== Restore original tab visibility now that all charts have rendered =====
-allTabs.forEach(t => {
-  t.style.display = '';
-  t.style.visibility = '';
-  t.style.position = '';
-  t.style.left = '';
-  t.style.width = '';
-});
-
-// ===== Print handling: ensure all charts redraw at print size =====
-window.addEventListener('beforeprint', () => {
-  // CSS handles revealing all tabs for print; we just nudge Chart.js to redraw
+// ===== Print handling =====
+// When printing, ALL tabs become visible (per @media print CSS). Charts inside tabs
+// that haven't been built yet will be missing. So before print fires we eagerly
+// build any unbuilt charts. We use a synchronous loop so it completes before print.
+function buildAllUnbuiltCharts() {
+  // First make all tabs laid out so canvases have dimensions
+  const previousActives = [];
+  document.querySelectorAll('.tab-content').forEach(c => {
+    previousActives.push({el: c, wasActive: c.classList.contains('active')});
+    c.classList.add('active');
+  });
+  // Build any charts that haven't been built yet
+  chartRegistry.forEach(({canvasId, builder}) => {
+    const canvas = document.getElementById(canvasId);
+    if (canvas && !Chart.getChart(canvas)) {
+      builder(canvasId);
+    }
+  });
+  // Resize all existing charts to fit their now-visible containers
   Object.values(Chart.instances).forEach(chart => {
     chart.resize();
     chart.update('none');
   });
+  return previousActives;
+}
+
+let printState = null;
+window.addEventListener('beforeprint', () => {
+  printState = buildAllUnbuiltCharts();
 });
 window.addEventListener('afterprint', () => {
+  // Restore original single-tab view
+  if (printState) {
+    printState.forEach(({el, wasActive}) => {
+      if (!wasActive) el.classList.remove('active');
+    });
+    printState = null;
+  }
   Object.values(Chart.instances).forEach(chart => chart.resize());
 });
+
+// Also build all charts eagerly on first load so screen viewing of any tab works without delay
+// (run async so initial page paint isn't blocked)
+setTimeout(() => {
+  const previousActives = [];
+  document.querySelectorAll('.tab-content').forEach(c => {
+    previousActives.push({el: c, wasActive: c.classList.contains('active')});
+    c.style.position = 'absolute';
+    c.style.left = '-99999px';
+    c.style.top = '0';
+    c.style.width = '1340px';
+    c.style.display = 'block';
+  });
+  // Build any unbuilt charts
+  chartRegistry.forEach(({canvasId, builder}) => {
+    const canvas = document.getElementById(canvasId);
+    if (canvas && !Chart.getChart(canvas)) {
+      builder(canvasId);
+    }
+  });
+  // Restore visibility
+  previousActives.forEach(({el, wasActive}) => {
+    el.style.position = '';
+    el.style.left = '';
+    el.style.top = '';
+    el.style.width = '';
+    el.style.display = '';
+  });
+}, 100);
 </script>
 
 </body>
