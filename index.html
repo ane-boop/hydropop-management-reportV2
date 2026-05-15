@@ -61,6 +61,38 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
 .kpi-def{font-size:10px;color:var(--mgrey);padding:4px 12px 8px;font-style:italic;border-bottom:1px solid var(--lgrey);background:#fafafa;text-align:left!important}
 @media(max-width:1100px){.kpi-row{grid-template-columns:repeat(3,1fr)}.chart-grid-3{grid-template-columns:1fr 1fr}}
 @media(max-width:768px){.kpi-row{grid-template-columns:repeat(2,1fr)}.chart-grid-2,.chart-grid-3{grid-template-columns:1fr}.tab-content{padding:16px}}
+
+/* Print button (screen only) */
+.print-btn{position:fixed;bottom:24px;right:24px;background:var(--teal);color:white;border:none;padding:12px 20px;border-radius:24px;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.2);z-index:200;letter-spacing:.3px}
+.print-btn:hover{background:var(--dteal)}
+
+/* ===== PRINT STYLES ===== */
+@media print{
+  @page{size:A3 landscape;margin:10mm}
+  body{background:white;font-size:11px}
+  .topbar{position:static;box-shadow:none;border-bottom:2px solid var(--navy);page-break-after:avoid}
+  .tabs{display:none}
+  .topbar-date{display:none}
+  .print-btn{display:none}
+  /* Force all tabs visible, each starts on a new page */
+  .tab-content{display:block!important;page-break-before:always;padding:0;max-width:100%}
+  .tab-content:first-of-type{page-break-before:auto}
+  /* Avoid breaking inside cards and tables where possible */
+  .chart-card,.kpi-card,.data-table{page-break-inside:avoid}
+  .sec-hdr{page-break-after:avoid}
+  .sec-commentary{page-break-inside:avoid;page-break-after:avoid}
+  /* Make sure charts render with their colours */
+  .kpi-card,.page-header,.data-table th,.section-row td,.total-row td,.highlight-row td{
+    -webkit-print-color-adjust:exact;print-color-adjust:exact
+  }
+  /* Slightly tighter spacing for print */
+  .kpi-row{margin-bottom:16px;gap:8px}
+  .chart-grid-2,.chart-grid-3{gap:12px;margin-bottom:12px}
+  .chart-card{padding:12px;box-shadow:none;border:1px solid var(--lgrey)}
+  .chart-card canvas{max-height:200px}
+  .page-header{margin-bottom:16px;padding:16px 20px}
+  .page-header h1{font-size:18px}
+}
 </style>
 </head>
 <body>
@@ -72,7 +104,7 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
     <button class="tab-btn" data-tab="apr-fin">April 2026 Financials<span class="tab-sub">P&amp;L · BS · Cash Flow</span></button>
     <button class="tab-btn" data-tab="mar-kpi">March 2026 KPIs<span class="tab-sub">Month in review</span></button>
     <button class="tab-btn" data-tab="mar-fin">March 2026 Financials<span class="tab-sub">P&amp;L · BS · Cash Flow</span></button>
-    <button class="tab-btn" data-tab="fy26-kpi">FY26 KPIs<span class="tab-sub">Nov 25 to Apr 26</span></button>
+    <button class="tab-btn" data-tab="fy26-kpi">FY26 KPIs<span class="tab-sub">Nov 25 to Feb 26</span></button>
     <button class="tab-btn" data-tab="fy26-fin">FY26 Financials<span class="tab-sub">P&amp;L · BS · Cash Flow</span></button>
   </div>
   <div class="topbar-date">Capelynx (Pty) Ltd t/a Hydropop</div>
@@ -98,7 +130,7 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
   </div>
 
   <div class="sec-hdr"><h2>Revenue</h2><span class="sec-badge">Sales</span></div>
-  <div class="sec-commentary">April revenue of R102,916 was 20% below March, with Takealot (R43,016) and Payfast (R30,495) the main contributors. Reseller revenue dropped to R6,522 (March: R39,788), but a new Sales-Other line of R15,984 partially offset this. GP margin rose to 68.9% on a much leaner COGS month, with no manufacturing or significant packaging cost.</div>
+  <div class="sec-commentary">April revenue of R102,916 was 20% below March, with Takealot (R43,016) and Payfast (R30,495) the main contributors. Reseller revenue dropped to R6,522 (March: R39,788), but a new Sales-Other line of R15,984 partially offset this. GP margin rose to 68.9% due to no delivery cost incurred in Apirl, as a large inventory purchase was made in March.</div>
 
   <div class="chart-grid-2">
     <div class="chart-card"><h3>Revenue by Month</h3><div class="chart-sub">Total across all channels (ZAR)</div><canvas id="aprRevMonth"></canvas></div>
@@ -295,7 +327,7 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
   </div>
 
   <div class="sec-hdr"><h2>Revenue</h2><span class="sec-badge">Sales</span></div>
-  <div class="sec-commentary">March revenue of R128,920 was broadly in line with February. Takealot remained the strongest channel at R58,878, followed by Resellers (R39,788) and Payfast (R28,060). GP margin improved slightly to 51.4% on better cost discipline.</div>
+  <div class="sec-commentary">March revenue of R128,920 was broadly in line with February. Takealot remained the strongest channel at R58,878, followed by Resellers (R39,788) and Payfast (R28,060). GP margin is in line with the prior month at 51.4%.</div>
 
   <div class="chart-grid-2">
     <div class="chart-card"><h3>Revenue by Month</h3><div class="chart-sub">Total across all channels (ZAR)</div><canvas id="marRevMonth"></canvas></div>
@@ -455,22 +487,23 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
     <thead><tr><th>Account</th><th>Mar 2026</th><th>Feb 2026</th></tr></thead>
     <tbody>
       <tr class="section-row"><td colspan="3">OPERATING ACTIVITIES</td></tr>
-      <tr><td>Receipts from customers</td><td>R115,817</td><td>R142,000</td></tr>
-      <tr><td>Payments to suppliers and employees</td><td class="neg">(R66,988)</td><td class="neg">(R94,000)</td></tr>
+      <tr><td>Receipts from customers</td><td>R115,817</td><td>R127,064</td></tr>
+      <tr><td>Payments to suppliers and employees</td><td class="neg">(R66,988)</td><td class="neg">(R69,724)</td></tr>
       <tr><td>Cash receipts from other operating activities</td><td>R33</td><td>R0</td></tr>
-      <tr class="total-row"><td>Net Cash Flows from Operating Activities</td><td class="pos">R48,862</td><td class="pos">R48,000</td></tr>
+      <tr><td>Cash payments from other operating activities</td><td>R0</td><td class="neg">(R114)</td></tr>
+      <tr class="total-row"><td>Net Cash Flows from Operating Activities</td><td class="pos">R48,862</td><td class="pos">R57,226</td></tr>
 
       <tr class="section-row"><td colspan="3">INVESTING ACTIVITIES</td></tr>
-      <tr><td>Payment for property, plant and equipment</td><td class="neg">(R4,729)</td><td>R0</td></tr>
-      <tr><td>Other cash items from investing activities</td><td class="neg">(R219,802)</td><td class="neg">(R12,000)</td></tr>
-      <tr class="total-row"><td>Net Cash Flows from Investing Activities</td><td class="neg">(R224,532)</td><td class="neg">(R12,000)</td></tr>
+      <tr><td>Payment for property, plant and equipment</td><td class="neg">(R4,729)</td><td class="neg">(R43)</td></tr>
+      <tr><td>Other cash items from investing activities</td><td class="neg">(R219,802)</td><td class="neg">(R124,857)</td></tr>
+      <tr class="total-row"><td>Net Cash Flows from Investing Activities</td><td class="neg">(R224,532)</td><td class="neg">(R124,900)</td></tr>
 
       <tr class="section-row"><td colspan="3">FINANCING ACTIVITIES</td></tr>
-      <tr><td>Other cash items from financing activities</td><td class="pos">R81,437</td><td>R0</td></tr>
-      <tr class="total-row"><td>Net Cash Flows from Financing Activities</td><td class="pos">R81,437</td><td>R0</td></tr>
+      <tr><td>Other cash items from financing activities</td><td class="pos">R81,437</td><td class="neg">(R4)</td></tr>
+      <tr class="total-row"><td>Net Cash Flows from Financing Activities</td><td class="pos">R81,437</td><td class="neg">(R4)</td></tr>
 
-      <tr class="highlight-row"><td>NET CHANGE IN CASH</td><td class="neg">(R94,233)</td><td class="pos">R36,000</td></tr>
-      <tr><td>Cash at beginning of period</td><td>R146,845</td><td>R110,845</td></tr>
+      <tr class="highlight-row"><td>NET CHANGE IN CASH</td><td class="neg">(R94,233)</td><td class="neg">(R67,678)</td></tr>
+      <tr><td>Cash at beginning of period</td><td>R146,845</td><td>R214,523</td></tr>
       <tr class="total-row"><td>Cash at end of period</td><td>R52,612</td><td>R146,845</td></tr>
     </tbody>
   </table>
@@ -481,22 +514,22 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
   <div class="page-header">
     <div class="page-header-left">
       <h1>FY2026: KPI Dashboard</h1>
-      <p>November 2025 to April 2026 · 6 trading months · Capelynx (Pty) Ltd t/a Hydropop</p>
+      <p>November 2025 to February 2026 · 4 trading months · Capelynx (Pty) Ltd t/a Hydropop</p>
     </div>
     <div class="page-header-badge">Full-year view</div>
   </div>
 
   <div class="kpi-row">
-    <div class="kpi-card navy"><div class="kpi-label">FY26 Revenue</div><div class="kpi-value">R846,786</div><div class="kpi-sub">Nov 25 to Apr 26</div></div>
-    <div class="kpi-card teal"><div class="kpi-label">Gross Profit</div><div class="kpi-value">R445,246</div><div class="kpi-sub">After all cost of goods</div></div>
-    <div class="kpi-card navy"><div class="kpi-label">GP Margin</div><div class="kpi-value">52.6%</div><div class="kpi-sub">53c profit per R1 sold</div></div>
-    <div class="kpi-card teal"><div class="kpi-label">Total Inventory</div><div class="kpi-value">R457,074</div><div class="kpi-sub">Apr 2026</div></div>
-    <div class="kpi-card navy"><div class="kpi-label">Boxes Sold</div><div class="kpi-value">2,297</div><div class="kpi-sub">All channels combined</div></div>
-    <div class="kpi-card teal"><div class="kpi-label">Net Profit</div><div class="kpi-value">R186,097</div><div class="kpi-sub">After all expenses</div></div>
+    <div class="kpi-card navy"><div class="kpi-label">FY26 Revenue</div><div class="kpi-value">R614,950</div><div class="kpi-sub">Nov 25 to Feb 26</div></div>
+    <div class="kpi-card teal"><div class="kpi-label">Gross Profit</div><div class="kpi-value">R308,056</div><div class="kpi-sub">After all cost of goods</div></div>
+    <div class="kpi-card navy"><div class="kpi-label">GP Margin</div><div class="kpi-value">50.1%</div><div class="kpi-sub">50c profit per R1 sold</div></div>
+    <div class="kpi-card teal"><div class="kpi-label">Total Inventory</div><div class="kpi-value">R198,442</div><div class="kpi-sub">Feb 2026</div></div>
+    <div class="kpi-card navy"><div class="kpi-label">Boxes Sold</div><div class="kpi-value">1,587</div><div class="kpi-sub">All channels combined</div></div>
+    <div class="kpi-card teal"><div class="kpi-label">Net Profit</div><div class="kpi-value">R153,098</div><div class="kpi-sub">After all expenses</div></div>
   </div>
 
   <div class="sec-hdr"><h2>Revenue</h2><span class="sec-badge">Sales</span></div>
-  <div class="sec-commentary">January 2026 was the strongest month at R353,149, driven by the large Reseller (FA Project Arcadia) order of R231,050. Excluding that order, the monthly run-rate has been approximately R100,000 to R130,000 since December. Takealot has grown steadily as a recurring channel since coming online in December.</div>
+  <div class="sec-commentary">January 2026 was the strongest month at R353,149, driven by the large Reseller (FA Project Arcadia) order of R231,050. Excluding that order, the monthly run-rate was approximately R87,000. Takealot came online in December and has grown steadily as a recurring revenue channel.</div>
 
   <div class="chart-grid-2">
     <div class="chart-card"><h3>Revenue by Month</h3><div class="chart-sub">Total across all channels (ZAR)</div><canvas id="fyRevMonth"></canvas></div>
@@ -508,7 +541,7 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
   </div>
 
   <div class="sec-hdr"><h2>Inventory</h2><span class="sec-badge">Stock</span></div>
-  <div class="sec-commentary">Total inventory grew from R123,227 in November to R457,074 by April, driven primarily by a large electrolyte powder purchase in March. The composition shifted from a balanced mix toward heavy electrolyte weighting, which will convert through to sachet inventory and then finished sales over the coming months.</div>
+  <div class="sec-commentary">Total inventory grew from R123,227 in November to R198,442 in February, driven primarily by sachet inventory building in February (R55,362). The inventory composition shifted significantly across the period as powder purchases were filled into sachets and sold.</div>
 
   <div class="chart-grid-2">
     <div class="chart-card"><h3>Inventory Value by Category</h3><div class="chart-sub">Closing balance at month end (ZAR, from Balance Sheet)</div><canvas id="fyInvCat"></canvas></div>
@@ -516,7 +549,7 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
   </div>
 
   <div class="sec-hdr"><h2>Inventory KPIs</h2><span class="sec-badge">Efficiency</span></div>
-  <div class="sec-commentary">January's large order produced strong efficiency across all KPIs. The underlying run-rate in subsequent months reflects a business building inventory ahead of demand, with turnover and DSI expected to improve as monthly sales volumes increase. April's metrics remain below target and require continued focus.</div>
+  <div class="sec-commentary">January's large order produced strong efficiency metrics across all KPIs. The underlying run-rate in November and February reflects a business building inventory ahead of demand, with turnover and DSI expected to improve as monthly sales volumes increase.</div>
 
   <div class="chart-grid-3">
     <div class="chart-card"><h3>Inventory Turnover (annualised)</h3><div class="chart-sub">Higher is better. Target: 4-6x per year</div><canvas id="fyTurnover"></canvas></div>
@@ -534,7 +567,7 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
   </table>
 
   <div class="sec-hdr"><h2>Cash Position</h2><span class="sec-badge">Liquidity</span></div>
-  <div class="sec-commentary">January's R215,000 peak reflects receipt of the large Arcadia reseller payment. Cash declined in March on the electrolyte purchase, then stabilised in April after operating activities funded a R60,000 intercompany loan repayment. Cash coverage is now approximately one month of operating expenses.</div>
+  <div class="sec-commentary">January's R214,523 peak reflects receipt of the large Arcadia reseller payment. February's closing cash of R146,845 reflects subsequent inventory purchases. Cash coverage relative to monthly operating expenses remained above two months throughout the FY26 period. An assumption of 110 boxes per month given away for marketing purposes has been applied.</div>
 
   <div class="chart-grid-2">
     <div class="chart-card"><h3>Cash and Bank Balance</h3><div class="chart-sub">Closing balance across all bank accounts at month end (ZAR)</div><canvas id="fyCash"></canvas></div>
@@ -547,78 +580,111 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
   <div class="page-header">
     <div class="page-header-left">
       <h1>FY2026: Financial Statements</h1>
-      <p>November 2025 to April 2026 · Capelynx (Pty) Ltd t/a Hydropop</p>
+      <p>November 2025 to February 2026 · Capelynx (Pty) Ltd t/a Hydropop</p>
     </div>
     <div class="page-header-badge">Statements</div>
   </div>
 
   <div class="sec-hdr"><h2>Income Statement</h2><span class="sec-badge">P&amp;L</span></div>
   <table class="data-table">
-    <thead><tr><th>Account</th><th>FY26 Total</th><th>Apr 2026</th><th>Mar 2026</th><th>Feb 2026</th><th>Jan 2026</th><th>Dec 2025</th><th>Nov 2025</th></tr></thead>
+    <thead><tr><th>Account</th><th>FY26 Total</th><th>Feb 2026</th><th>Jan 2026</th><th>Dec 2025</th><th>Nov 2025</th></tr></thead>
     <tbody>
-      <tr class="section-row"><td colspan="8">TRADING INCOME</td></tr>
-      <tr><td>Interest Income</td><td>R210</td><td>R0</td><td>R9</td><td>R9</td><td>R21</td><td>R68</td><td>R111</td></tr>
-      <tr><td>Sales - Other</td><td>R16,462</td><td>R15,984</td><td>R0</td><td>R0</td><td>R0</td><td>R239</td><td>R239</td></tr>
-      <tr><td>Sales - Payfast</td><td>R176,449</td><td>R30,495</td><td>R28,060</td><td>R37,089</td><td>R51,256</td><td>R34,376</td><td>R23,233</td></tr>
-      <tr><td>Sales - Resellers</td><td>R318,349</td><td>R6,522</td><td>R39,788</td><td>R27,669</td><td>R231,050</td><td>R27,032</td><td>R26,077</td></tr>
-      <tr><td>Sales - Takealot</td><td>R187,017</td><td>R43,016</td><td>R58,878</td><td>R60,974</td><td>R65,792</td><td>R17,235</td><td>R0</td></tr>
-      <tr><td>Sales - Yoco</td><td>R17,315</td><td>R4,835</td><td>R604</td><td>R697</td><td>R5,030</td><td>R4,466</td><td>R2,287</td></tr>
-      <tr><td>Sales - Amazon</td><td>R3,645</td><td>R2,063</td><td>R1,582</td><td>R0</td><td>R0</td><td>R0</td><td>R0</td></tr>
-      <tr class="total-row"><td>TOTAL REVENUE</td><td>R846,786</td><td>R102,916</td><td>R128,920</td><td>R126,437</td><td>R353,149</td><td>R83,417</td><td>R51,947</td></tr>
+      <tr class="section-row"><td colspan="6">TRADING INCOME</td></tr>
+      <tr><td>Interest Income</td><td>R210</td><td>R9</td><td>R21</td><td>R68</td><td>R111</td></tr>
+      <tr><td>Sales - Other</td><td>R478</td><td>R0</td><td>R0</td><td>R239</td><td>R239</td></tr>
+      <tr><td>Sales - Payfast</td><td>R145,954</td><td>R37,089</td><td>R51,256</td><td>R34,376</td><td>R23,233</td></tr>
+      <tr><td>Sales - Resellers</td><td>R311,828</td><td>R27,669</td><td>R231,050</td><td>R27,032</td><td>R26,077</td></tr>
+      <tr><td>Sales - Takealot</td><td>R144,001</td><td>R60,974</td><td>R65,792</td><td>R17,235</td><td>R0</td></tr>
+      <tr><td>Sales - Yoco</td><td>R12,480</td><td>R697</td><td>R5,030</td><td>R4,466</td><td>R2,287</td></tr>
+      <tr><td>Sales - Amazon</td><td>R0</td><td>R0</td><td>R0</td><td>R0</td><td>R0</td></tr>
+      <tr class="total-row"><td>TOTAL REVENUE</td><td>R614,950</td><td>R126,437</td><td>R353,149</td><td>R83,417</td><td>R51,947</td></tr>
 
-      <tr class="section-row"><td colspan="8">COST OF SALES</td></tr>
-      <tr><td>Total COGS</td><td>R401,540</td><td>R31,975</td><td>R62,670</td><td>R64,108</td><td>R177,515</td><td>R11,245</td><td>R54,027</td></tr>
+      <tr class="section-row"><td colspan="6">COST OF SALES</td></tr>
+      <tr><td>Total COGS</td><td>R306,895</td><td>R64,108</td><td>R177,515</td><td>R11,245</td><td>R54,027</td></tr>
 
-      <tr class="highlight-row"><td>GROSS PROFIT</td><td>R445,246</td><td>R70,941</td><td>R66,250</td><td>R62,329</td><td>R175,634</td><td>R72,172</td><td class="neg">(R2,080)</td></tr>
-      <tr class="highlight-row"><td>GP Margin %</td><td>52.6%</td><td>68.9%</td><td>51.4%</td><td>49.3%</td><td>49.7%</td><td>86.5%</td><td class="neg">-4.0%</td></tr>
+      <tr class="highlight-row"><td>GROSS PROFIT</td><td>R308,056</td><td>R62,329</td><td>R175,634</td><td>R72,172</td><td class="neg">(R2,080)</td></tr>
+      <tr class="highlight-row"><td>GP Margin %</td><td>50.1%</td><td>49.3%</td><td>49.7%</td><td>86.5%</td><td class="neg">-4.0%</td></tr>
 
-      <tr class="section-row"><td colspan="8">OPERATING EXPENSES</td></tr>
-      <tr><td>Total Operating Expenses</td><td>R259,183</td><td>R50,075</td><td>R54,150</td><td>R48,176</td><td>R56,198</td><td>R36,049</td><td>R14,535</td></tr>
+      <tr class="section-row"><td colspan="6">OPERATING EXPENSES</td></tr>
+      <tr><td>Total Operating Expenses</td><td>R154,958</td><td>R48,176</td><td>R56,198</td><td>R36,049</td><td>R14,535</td></tr>
 
-      <tr><td>Other Income (JustInvest Interest)</td><td>R33</td><td>R0</td><td>R33</td><td>R0</td><td>R0</td><td>R0</td><td>R0</td></tr>
-
-      <tr class="total-row"><td>NET PROFIT</td><td class="pos">R186,097</td><td class="pos">R20,866</td><td class="pos">R12,133</td><td class="pos">R14,154</td><td class="pos">R119,436</td><td class="pos">R36,123</td><td class="neg">(R16,615)</td></tr>
-      <tr><td>Net Profit Margin %</td><td>22.0%</td><td>20.3%</td><td>9.4%</td><td>11.2%</td><td>33.8%</td><td>43.3%</td><td class="neg">-32.0%</td></tr>
+      <tr class="total-row"><td>NET PROFIT</td><td class="pos">R153,098</td><td class="pos">R14,154</td><td class="pos">R119,436</td><td class="pos">R36,123</td><td class="neg">(R16,615)</td></tr>
+      <tr><td>Net Profit Margin %</td><td>24.9%</td><td>11.2%</td><td>33.8%</td><td>43.3%</td><td class="neg">-32.0%</td></tr>
     </tbody>
   </table>
 
   <div class="sec-hdr"><h2>Balance Sheet</h2><span class="sec-badge">BS</span></div>
-  <div class="sec-commentary">Balance sheet shown at each month end. Inventory has grown from R123,227 in November to R457,074 in April, with the largest movement in March on the electrolyte forward purchase. Cash position recovered slightly in April after operations funded a R60,000 intercompany loan repayment.</div>
+  <div class="sec-commentary">Balance sheet shown at each month end across the FY26 period. Inventory has grown from R123,227 in November to R198,442 in February, building ahead of forecast demand. Cash peaked at R214,523 in January on receipt of the large reseller payment, then reduced as inventory purchases settled.</div>
   <table class="data-table">
-    <thead><tr><th>Account</th><th>30 Apr 2026</th><th>31 Mar 2026</th><th>28 Feb 2026</th><th>31 Jan 2026</th><th>31 Dec 2025</th><th>30 Nov 2025</th></tr></thead>
+    <thead><tr><th>Account</th><th>28 Feb 2026</th><th>31 Jan 2026</th><th>31 Dec 2025</th><th>30 Nov 2025</th></tr></thead>
     <tbody>
-      <tr class="section-row"><td colspan="7">ASSETS</td></tr>
-      <tr><td>Total Bank</td><td>R55,151</td><td>R52,612</td><td>R146,845</td><td>R214,523</td><td>R79,118</td><td>R70,150</td></tr>
-      <tr><td>Accounts Receivable</td><td>R3,769</td><td>R19,091</td><td>R5,909</td><td>R6,415</td><td>R5,318</td><td>R0</td></tr>
-      <tr><td>Total Inventory</td><td>R457,074</td><td>R487,220</td><td>R198,442</td><td>R150,040</td><td>R164,145</td><td>R123,227</td></tr>
-      <tr class="sub-row"><td>Electrolytes</td><td>R211,434</td><td>R230,018</td><td>R22,417</td><td>R25,662</td><td>R36,763</td><td>R36,763</td></tr>
-      <tr class="sub-row"><td>Sachets</td><td>R88,962</td><td>R94,997</td><td>R55,362</td><td>R5,080</td><td>R31,625</td><td>R19,149</td></tr>
-      <tr class="sub-row"><td>Boxes</td><td>R100,241</td><td>R103,694</td><td>R71,882</td><td>R71,465</td><td>R43,426</td><td>R30,390</td></tr>
-      <tr class="sub-row"><td>Merchandise</td><td>R12,279</td><td>R16,071</td><td>R4,589</td><td>R2,111</td><td>R2,111</td><td>R2,111</td></tr>
-      <tr class="sub-row"><td>Inventory (other)</td><td>R44,158</td><td>R42,441</td><td>R44,192</td><td>R45,722</td><td>R50,219</td><td>R34,814</td></tr>
-      <tr><td>Fixed Assets (net)</td><td>R99,589</td><td>R99,589</td><td>R90,130</td><td>R90,130</td><td>R90,130</td><td>R90,130</td></tr>
-      <tr class="total-row"><td>TOTAL ASSETS</td><td>R615,583</td><td>R658,512</td><td>R441,325</td><td>R461,107</td><td>R338,711</td><td>R283,507</td></tr>
+      <tr class="section-row"><td colspan="5">ASSETS</td></tr>
+      <tr><td>JustInvest</td><td>R2,229</td><td>R2,219</td><td>R2,198</td><td>R15,130</td></tr>
+      <tr><td>Nedbank Business Account</td><td>R114,017</td><td>R151,652</td><td>R13,231</td><td>R32,693</td></tr>
+      <tr><td>Payfast</td><td>R13,694</td><td>R43,409</td><td>R55,400</td><td>R22,327</td></tr>
+      <tr><td>Takealot</td><td>R16,905</td><td>R17,243</td><td>R8,289</td><td>R0</td></tr>
+      <tr class="total-row"><td>Total Bank</td><td>R146,845</td><td>R214,523</td><td>R79,118</td><td>R70,150</td></tr>
+      <tr><td>Accounts Receivable</td><td>R5,909</td><td>R6,415</td><td>R5,318</td><td>R0</td></tr>
+      <tr><td>Inventory</td><td>R44,192</td><td>R45,722</td><td>R50,219</td><td>R34,814</td></tr>
+      <tr><td>Inventory - Merchandise</td><td>R4,589</td><td>R2,111</td><td>R2,111</td><td>R2,111</td></tr>
+      <tr><td>Inventory Boxes</td><td>R71,882</td><td>R71,465</td><td>R43,426</td><td>R30,390</td></tr>
+      <tr><td>Inventory Electrolytes</td><td>R22,417</td><td>R25,662</td><td>R36,763</td><td>R36,763</td></tr>
+      <tr><td>Inventory Sachets</td><td>R55,362</td><td>R5,080</td><td>R31,625</td><td>R19,149</td></tr>
+      <tr class="total-row"><td>Total Current Assets</td><td>R204,351</td><td>R156,454</td><td>R169,463</td><td>R123,227</td></tr>
+      <tr><td>Accumulated Depreciation - Motor Vehicles</td><td class="neg">(R8,500)</td><td class="neg">(R8,500)</td><td class="neg">(R8,500)</td><td class="neg">(R8,500)</td></tr>
+      <tr><td>Equipment</td><td>R0</td><td>R0</td><td>R0</td><td>R0</td></tr>
+      <tr><td>Intangible Asset - Trademark</td><td>R13,630</td><td>R13,630</td><td>R13,630</td><td>R13,630</td></tr>
+      <tr><td>Motor Vehicles</td><td>R85,000</td><td>R85,000</td><td>R85,000</td><td>R85,000</td></tr>
+      <tr class="total-row"><td>Total Fixed Assets</td><td>R90,130</td><td>R90,130</td><td>R90,130</td><td>R90,130</td></tr>
+      <tr class="total-row"><td>TOTAL ASSETS</td><td>R441,325</td><td>R461,107</td><td>R338,711</td><td>R283,507</td></tr>
 
-      <tr class="section-row"><td colspan="7">LIABILITIES &amp; EQUITY</td></tr>
-      <tr><td>Total Liabilities</td><td>R27,563</td><td>R91,358</td><td class="neg">(R113,695)</td><td class="neg">(R79,760)</td><td class="neg">(R82,719)</td><td class="neg">(R101,801)</td></tr>
-      <tr class="highlight-row"><td>NET ASSETS / EQUITY</td><td>R588,020</td><td>R567,154</td><td>R555,020</td><td>R540,867</td><td>R421,431</td><td>R385,308</td></tr>
+      <tr class="section-row"><td colspan="5">LIABILITIES</td></tr>
+      <tr><td>Accounts Payable</td><td class="neg">(R20,745)</td><td>R13,190</td><td>R10,231</td><td class="neg">(R8,851)</td></tr>
+      <tr><td>Intercompany (Functionalx)</td><td>R44,625</td><td>R44,625</td><td>R44,625</td><td>R44,625</td></tr>
+      <tr><td>Owner A Drawings</td><td>R0</td><td>R0</td><td>R0</td><td>R0</td></tr>
+      <tr><td>Loan (Non-current)</td><td class="pos">(R137,575)</td><td class="pos">(R137,575)</td><td class="pos">(R137,575)</td><td class="pos">(R137,575)</td></tr>
+      <tr class="total-row"><td>TOTAL LIABILITIES</td><td class="neg">(R113,695)</td><td class="neg">(R79,760)</td><td class="neg">(R82,719)</td><td class="neg">(R101,801)</td></tr>
+
+      <tr class="section-row"><td colspan="5">EQUITY</td></tr>
+      <tr><td>Contributed Capital - Chad</td><td>R112,000</td><td>R112,000</td><td>R112,000</td><td>R112,000</td></tr>
+      <tr><td>Contributed Capital - David</td><td>R85,000</td><td>R85,000</td><td>R85,000</td><td>R85,000</td></tr>
+      <tr><td>Owner A Share Capital</td><td>R100</td><td>R100</td><td>R100</td><td>R100</td></tr>
+      <tr><td>Retained Earnings</td><td>R250,045</td><td>R250,045</td><td>R250,045</td><td>R250,045</td></tr>
+      <tr><td>Current Year Earnings</td><td>R107,875</td><td>R93,722</td><td class="neg">(R25,715)</td><td class="neg">(R61,838)</td></tr>
+      <tr class="total-row"><td>TOTAL EQUITY</td><td>R555,020</td><td>R540,867</td><td>R421,431</td><td>R385,308</td></tr>
+      <tr class="highlight-row"><td>NET ASSETS</td><td>R555,020</td><td>R540,867</td><td>R421,431</td><td>R385,308</td></tr>
     </tbody>
   </table>
 
-  <div class="sec-hdr"><h2>Cash Flow Summary</h2><span class="sec-badge">CF</span></div>
-  <div class="sec-commentary">Detailed cash flow statements for March 2026 and April 2026 are reflected per the indirect-method workings. For November 2025 to February 2026, only opening and closing cash positions are shown; the operating, investing and financing breakdown for those months has not been built. The Net Change column is computed from the Xero bank balance movement.</div>
+  <div class="sec-hdr"><h2>Cash Flow Statement</h2><span class="sec-badge">CF</span></div>
+  <div class="sec-commentary">Direct-method cash flow per Xero, showing actual receipts and payments rather than working capital movements. February's large investing outflow reflects inventory build-up. November received an opening capital contribution recorded in financing activities prior to FY26.</div>
   <table class="data-table">
-    <thead><tr><th>Activity</th><th>Apr 2026</th><th>Mar 2026</th><th>Feb 2026</th><th>Jan 2026</th><th>Dec 2025</th><th>Nov 2025</th></tr></thead>
+    <thead><tr><th>Account</th><th>Feb 2026</th><th>Jan 2026</th><th>Dec 2025</th><th>Nov 2025</th></tr></thead>
     <tbody>
-      <tr><td>Net Cash from Operating Activities</td><td class="pos">R64,268</td><td class="pos">R48,862</td><td>n/a</td><td>n/a</td><td>n/a</td><td>n/a</td></tr>
-      <tr><td>Net Cash from Investing Activities</td><td class="neg">(R1,729)</td><td class="neg">(R224,532)</td><td>n/a</td><td>n/a</td><td>n/a</td><td>n/a</td></tr>
-      <tr><td>Net Cash from Financing Activities</td><td class="neg">(R60,000)</td><td class="pos">R81,437</td><td>n/a</td><td>n/a</td><td>n/a</td><td>n/a</td></tr>
-      <tr class="highlight-row"><td>Net Change in Cash</td><td>R2,539</td><td class="neg">(R94,233)</td><td class="neg">(R67,678)</td><td class="pos">R135,405</td><td class="pos">R8,968</td><td>n/a</td></tr>
-      <tr><td>Opening Cash</td><td>R52,612</td><td>R146,845</td><td>R214,523</td><td>R79,118</td><td>R70,150</td><td>n/a</td></tr>
-      <tr class="total-row"><td>Closing Cash</td><td>R55,151</td><td>R52,612</td><td>R146,845</td><td>R214,523</td><td>R79,118</td><td>R70,150</td></tr>
+      <tr class="section-row"><td colspan="5">OPERATING ACTIVITIES</td></tr>
+      <tr><td>Receipts from customers</td><td class="pos">R127,064</td><td class="pos">R352,052</td><td class="pos">R78,099</td><td class="pos">R51,947</td></tr>
+      <tr><td>Payments to suppliers and employees</td><td class="neg">(R69,724)</td><td class="neg">(R64,897)</td><td class="neg">(R36,858)</td><td class="neg">(R14,655)</td></tr>
+      <tr><td>Cash receipts from other operating activities</td><td>R0</td><td>R0</td><td>R0</td><td>R0</td></tr>
+      <tr><td>Cash payments from other operating activities</td><td class="neg">(R114)</td><td class="neg">(R95)</td><td class="neg">(R36)</td><td class="neg">(R41)</td></tr>
+      <tr class="total-row"><td>Net Cash from Operating Activities</td><td class="pos">R57,226</td><td class="pos">R287,060</td><td class="pos">R41,206</td><td class="pos">R37,251</td></tr>
+
+      <tr class="section-row"><td colspan="5">INVESTING ACTIVITIES</td></tr>
+      <tr><td>Payment for property, plant and equipment</td><td class="neg">(R43)</td><td>R0</td><td>R0</td><td class="neg">(R13,630)</td></tr>
+      <tr><td>Other cash items from investing activities</td><td class="neg">(R124,857)</td><td class="neg">(R150,105)</td><td class="neg">(R32,237)</td><td class="neg">(R18,110)</td></tr>
+      <tr class="total-row"><td>Net Cash from Investing Activities</td><td class="neg">(R124,900)</td><td class="neg">(R150,105)</td><td class="neg">(R32,237)</td><td class="neg">(R31,740)</td></tr>
+
+      <tr class="section-row"><td colspan="5">FINANCING ACTIVITIES</td></tr>
+      <tr><td>Other cash items from financing activities</td><td class="neg">(R4)</td><td class="neg">(R1,551)</td><td class="neg">(R0)</td><td>R0</td></tr>
+      <tr class="total-row"><td>Net Cash from Financing Activities</td><td class="neg">(R4)</td><td class="neg">(R1,551)</td><td class="neg">(R0)</td><td>R0</td></tr>
+
+      <tr class="highlight-row"><td>NET CHANGE IN CASH</td><td class="neg">(R67,678)</td><td class="pos">R135,405</td><td class="pos">R8,968</td><td class="pos">R5,511</td></tr>
+      <tr><td>Opening Cash</td><td>R214,523</td><td>R79,118</td><td>R70,150</td><td>R64,639</td></tr>
+      <tr class="total-row"><td>Closing Cash</td><td>R146,845</td><td>R214,523</td><td>R79,118</td><td>R70,150</td></tr>
     </tbody>
   </table>
 </div>
+
+<button class="print-btn" onclick="window.print()">Print to PDF</button>
 
 <script>
 // ===== Tab switching =====
@@ -682,7 +748,8 @@ const gmroi = [-0.02, 0.50, 1.12, 0.36, 0.19, 0.15];
 
 const cash = [70150, 79118, 214523, 146845, 52612, 55151];
 // Operating cash flow: Nov-Feb not yet built (set to null so chart shows gaps for those months)
-const opCash = [null, null, null, null, 48862, 64268];
+// Operating cash flow per Xero direct method: Nov, Dec, Jan, Feb, Mar, Apr
+const opCash = [37251, 41206, 287060, 57226, 48862, 64268];
 
 // ===== Chart factory functions =====
 function buildRevMonthChart(canvasId, labels, data) {
@@ -831,18 +898,36 @@ buildGmroiChart('marGmroi', monthsToMar, 5);
 buildCashChart('marCash', monthsToMar, 5);
 buildOpCashChart('marOpCash', monthsToMar, 5);
 
-// ===== Build FY26 KPI tab charts (all 6 months) =====
-buildRevMonthChart('fyRevMonth', monthsFull, rev.full);
-buildChannelChart('fyRevChannel', monthsFull, 6);
-buildGpNpChart('fyGpNp', monthsFull, 6);
-buildGpMarginChart('fyGpMargin', monthsFull, 6);
-buildInvCatChart('fyInvCat', monthsFull, 6);
-buildBoxesChart('fyBoxes', monthsFull, 6);
-buildTurnoverChart('fyTurnover', monthsFull, 6);
-buildDsiChart('fyDsi', monthsFull, 6);
-buildGmroiChart('fyGmroi', monthsFull, 6);
-buildCashChart('fyCash', monthsFull, 6);
-buildOpCashChart('fyOpCash', monthsFull, 6);
+// ===== Build FY26 KPI tab charts (4 months: Nov-Feb only) =====
+buildRevMonthChart('fyRevMonth', monthsFY, rev.fy);
+buildChannelChart('fyRevChannel', monthsFY, 4);
+buildGpNpChart('fyGpNp', monthsFY, 4);
+buildGpMarginChart('fyGpMargin', monthsFY, 4);
+buildInvCatChart('fyInvCat', monthsFY, 4);
+buildBoxesChart('fyBoxes', monthsFY, 4);
+buildTurnoverChart('fyTurnover', monthsFY, 4);
+buildDsiChart('fyDsi', monthsFY, 4);
+buildGmroiChart('fyGmroi', monthsFY, 4);
+buildCashChart('fyCash', monthsFY, 4);
+buildOpCashChart('fyOpCash', monthsFY, 4);
+
+// ===== Print handling: force all charts to render at full size before print =====
+window.addEventListener('beforeprint', () => {
+  // Reveal all tabs so charts inside them have non-zero dimensions
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.add('active'));
+  // Resize all Chart.js instances so they render properly in print
+  Object.values(Chart.instances).forEach(chart => {
+    chart.resize();
+    chart.update('none');
+  });
+});
+window.addEventListener('afterprint', () => {
+  // Restore single-tab view
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  const activeBtn = document.querySelector('.tab-btn.active');
+  if (activeBtn) document.getElementById(activeBtn.dataset.tab).classList.add('active');
+  Object.values(Chart.instances).forEach(chart => chart.resize());
+});
 </script>
 
 </body>
