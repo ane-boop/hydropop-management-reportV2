@@ -194,7 +194,7 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
   <div class="topbar-date">Capelynx (Pty) Ltd t/a Hydropop</div>
 </div>
 
-  <div class="tab-content active" id="june-kpi">
+ <div class="tab-content active" id="june-kpi">
   <div class="page-header">
     <div class="page-header-left"><h1>June 2026: Month in Review</h1><p>Capelynx (Pty) Ltd t/a Hydropop · Management Report</p></div>
     <div class="page-header-badge">Month in review</div>
@@ -210,25 +210,25 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
   <div class="sec-hdr"><h2>Revenue</h2><span class="sec-badge">Sales</span></div>
   <div class="sec-commentary">June revenue of R77,356 fell 26% on May, with softness across most channels. Takealot was the exception and the largest channel at R53,029, up slightly on May, while Resellers dropped to R14,761 and Payfast eased to R5,667. Total boxes sold declined to 210 from 300. GP margin compressed sharply to 50.1% from 68.5%. The cause was cost of sales rather than price: COGS held at R38,596 even as revenue and volume fell, so a smaller sales base carried a similar cost load. Electrolyte and packaging costs did not scale down with volume and are being reviewed.</div>
   <div class="chart-grid-2">
-    <div class="chart-card"><h3>Revenue by Month</h3><div class="chart-sub">Total across all channels (ZAR)</div><canvas id="junRevMonth"></canvas></div>
-    <div class="chart-card"><h3>Revenue by Channel</h3><div class="chart-sub">Channel contribution each month (ZAR, stacked)</div><canvas id="junRevChannel"></canvas></div>
+    <div class="chart-card"><h3>Revenue by Month</h3><div class="chart-sub">Total across all channels (ZAR)</div><canvas id="juneRevMonth"></canvas></div>
+    <div class="chart-card"><h3>Revenue by Channel</h3><div class="chart-sub">Channel contribution each month (ZAR, stacked)</div><canvas id="juneRevChannel"></canvas></div>
   </div>
   <div class="chart-grid-2">
-    <div class="chart-card"><h3>Gross Profit vs Net Profit</h3><div class="chart-sub">After COGS (GP) and after all operating expenses (NP)</div><canvas id="junGpNp"></canvas></div>
-    <div class="chart-card"><h3>GP Margin % by Month</h3><div class="chart-sub">Gross profit as a percentage of revenue each month</div><canvas id="junGpMargin"></canvas></div>
+    <div class="chart-card"><h3>Gross Profit vs Net Profit</h3><div class="chart-sub">After COGS (GP) and after all operating expenses (NP)</div><canvas id="juneGpNp"></canvas></div>
+    <div class="chart-card"><h3>GP Margin % by Month</h3><div class="chart-sub">Gross profit as a percentage of revenue each month</div><canvas id="juneGpMargin"></canvas></div>
   </div>
   <div class="sec-hdr"><h2>Inventory</h2><span class="sec-badge">Stock</span></div>
   <div class="sec-commentary">Total inventory closed at R397,890, down from R424,270 in May, as production continued to draw down the large March electrolyte purchase. Electrolyte stock fell from R189,789 to R165,047 and sachets reduced from R81,935 to R73,901, while boxes rose to R102,947 following fresh printed box receipts.</div>
   <div class="chart-grid-2">
-    <div class="chart-card"><h3>Inventory Value by Category</h3><div class="chart-sub">Closing balance at month end (ZAR, from Balance Sheet)</div><canvas id="junInvCat"></canvas></div>
-    <div class="chart-card"><h3>Boxes Sold by Pack Size</h3><div class="chart-sub">Units sold per month</div><canvas id="junBoxes"></canvas></div>
+    <div class="chart-card"><h3>Inventory Value by Category</h3><div class="chart-sub">Closing balance at month end (ZAR, from Balance Sheet)</div><canvas id="juneInvCat"></canvas></div>
+    <div class="chart-card"><h3>Boxes Sold by Pack Size</h3><div class="chart-sub">Units sold per month</div><canvas id="juneBoxes"></canvas></div>
   </div>
   <div class="sec-hdr"><h2>Inventory KPIs</h2><span class="sec-badge">Efficiency</span></div>
   <div class="sec-commentary">June inventory KPIs stayed subdued. Turnover held at 0.9x annualised and DSI eased to 401 days. GMROI of 0.16x remains well below the 1.0x target, reflecting the March stock build still working through. These should improve as monthly sales recover.</div>
   <div class="chart-grid-3">
-    <div class="chart-card"><h3>Inventory Turnover (annualised)</h3><div class="chart-sub">Higher is better. Target: 4-6x per year</div><canvas id="junTurnover"></canvas></div>
-    <div class="chart-card"><h3>Days Sales of Inventory (DSI)</h3><div class="chart-sub">Lower is better. Target: 30-60 days</div><canvas id="junDsi"></canvas></div>
-    <div class="chart-card"><h3>GMROI</h3><div class="chart-sub">Gross profit per rand of average inventory. Target: above 1.0x</div><canvas id="junGmroi"></canvas></div>
+    <div class="chart-card"><h3>Inventory Turnover (annualised)</h3><div class="chart-sub">Higher is better. Target: 4-6x per year</div><canvas id="juneTurnover"></canvas></div>
+    <div class="chart-card"><h3>Days Sales of Inventory (DSI)</h3><div class="chart-sub">Lower is better. Target: 30-60 days</div><canvas id="juneDsi"></canvas></div>
+    <div class="chart-card"><h3>GMROI</h3><div class="chart-sub">Gross profit per rand of average inventory. Target: above 1.0x</div><canvas id="juneGmroi"></canvas></div>
   </div>
   <table class="data-table">
     <thead><tr><th>KPI</th><th style="text-align:left">Definition</th></tr></thead>
@@ -241,11 +241,11 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
   <div class="sec-hdr"><h2>Cash Position</h2><span class="sec-badge">Liquidity</span></div>
   <div class="sec-commentary">Closing cash rose strongly to R103,359 from R63,222 in May, a net inflow of R40,138. Operating cash flow was robust at R66,488, driven by strong receipts from clients of R104,824 as May reseller invoices were settled. This was partly offset by R27,921 of investing outflows in the month. Cash now covers roughly two months of operating expenses.</div>
   <div class="chart-grid-2">
-    <div class="chart-card"><h3>Cash and Bank Balance</h3><div class="chart-sub">Closing balance across all bank accounts at month end (ZAR)</div><canvas id="junCash"></canvas></div>
-    <div class="chart-card"><h3>Net Cash from Operations</h3><div class="chart-sub">Cash generated from trading activities each month (ZAR)</div><canvas id="junOpCash"></canvas></div>
+    <div class="chart-card"><h3>Cash and Bank Balance</h3><div class="chart-sub">Closing balance across all bank accounts at month end (ZAR)</div><canvas id="juneCash"></canvas></div>
+    <div class="chart-card"><h3>Net Cash from Operations</h3><div class="chart-sub">Cash generated from trading activities each month (ZAR)</div><canvas id="juneOpCash"></canvas></div>
   </div>
 </div>
-
+  
 <div class="tab-content" id="june-fin">
   <div class="page-header">
     <div class="page-header-left">
