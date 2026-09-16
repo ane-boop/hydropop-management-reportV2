@@ -227,7 +227,7 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
     <div class="kpi-card teal"><div class="kpi-label">Net Profit</div><div class="kpi-value">R114,181</div><div class="kpi-sub">Ties to current year earnings</div></div>
   </div>
   <div class="sec-hdr"><h2>Revenue</h2><span class="sec-badge">Sales</span></div>
-  <div class="sec-commentary">August revenue of R144,335 was 81% ahead of July and the strongest month since January, but the shape of the month was unusual. Resellers contributed R79,211, of which R73,056 was a single trade order from Wellness Warehouse for 240 x 30-packs and 160 x 15-packs at a discounted trade price of roughly 52% of retail. The recurring channels were steady: Takealot R42,761 (flat on July), Amazon R9,849, Payfast R9,632 and Yoco R2,882. Boxes sold jumped to 633 from 244. GP margin fell to 52.7% from 64.2% for two reasons. The Wellness Warehouse order earns about 54% margin against roughly 73% on the online channels, which on its own takes the blended product margin to around 64%. The month also carries an R11,934 merchandise stock adjustment that relates to the July stock count; if it is moved back to July, August margin would be 60.9% and July 49.3%.</div>
+  <div class="sec-commentary">August revenue of R144,335 was 81% ahead of July and the strongest month since January, but the shape of the month was unusual. Resellers contributed R79,211, of which R73,056 was a single trade order from Wellness Warehouse for 240 x 30-packs and 160 x 15-packs at a discounted trade price of roughly 52% of retail. The recurring channels were steady: Takealot R42,761 (flat on July), Amazon R9,849, Payfast R9,632 and Yoco R2,882. Boxes sold jumped to 633 from 244. GP margin fell to 52.7% from 64.2% for two reasons. The Wellness Warehouse order earns about 54% margin against roughly 73% on the online channels, which on its own takes the blended product margin to around 64%.</div>
   <div class="chart-grid-2">
     <div class="chart-card"><h3>Revenue by Month</h3><div class="chart-sub">Total across all channels (ZAR)</div><canvas id="augRevMonth"></canvas></div>
     <div class="chart-card"><h3>Revenue by Channel</h3><div class="chart-sub">Channel contribution each month (ZAR, stacked)</div><canvas id="augRevChannel"></canvas></div>
@@ -258,7 +258,7 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
     </tbody>
   </table>
   <div class="sec-hdr"><h2>Cash Position</h2><span class="sec-badge">Liquidity</span></div>
-  <div class="sec-commentary">Closing cash fell to R51,382 from R65,427, a net outflow of R14,045, despite the strongest trading month of the year. The reason is timing: the R73,056 Wellness Warehouse invoice was raised on 25 August and was unpaid at month end, so receivables rose by R74,224 while the stock it consumed had already been paid for. Operating cash flow on the indirect basis was an outflow of R57,407, offset by the R30,551 inventory release and an R12,810 intercompany inflow from Functionalx. Cash cover is under one month of operating expenses; collecting the Wellness Warehouse invoice on terms is the single most important cash action for September.</div>
+  <div class="sec-commentary">Closing cash fell to R51,382 from R65,427, a net outflow of R14,045, despite the strongest trading month of the year. Operating cash flow was only R6,843: receipts of R70,112 were in line with a normal month because the R73,056 Wellness Warehouse invoice, raised on 25 August, was unpaid at month end, while payments to suppliers rose to R63,269. A further R33,698 went into stock purchases, partly funded by a R12,810 intercompany inflow from Functionalx. Cash cover is under one month of operating expenses; collecting the Wellness Warehouse invoice on terms is the single most important cash action for September.</div>
   <div class="chart-grid-2">
     <div class="chart-card"><h3>Cash and Bank Balance</h3><div class="chart-sub">Closing balance across all bank accounts at month end (ZAR)</div><canvas id="augCash"></canvas></div>
     <div class="chart-card"><h3>Net Cash from Operations</h3><div class="chart-sub">Cash generated from trading activities each month (ZAR)</div><canvas id="augOpCash"></canvas></div>
@@ -380,27 +380,23 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
   </table>
 
   <div class="sec-hdr"><h2>Cash Flow Statement: August 2026</h2><span class="sec-badge">CF</span></div>
-  <div class="sec-commentary">Derived from the movements in the August balance sheet (indirect method), pending the Xero cash flow statement for the month. Inventory movements are shown under investing activities to match the classification used in the Xero statements for prior months.</div>
   <table class="data-table">
-    <thead><tr><th>Account</th><th>Aug 2026</th></tr></thead>
+    <thead><tr><th>Account</th><th>Aug 2026</th><th>Jul 2026</th></tr></thead>
     <tbody>
-      <tr class="section-row"><td colspan="2">OPERATING ACTIVITIES</td></tr>
-      <tr><td>Net profit for the month</td><td>R16,108</td></tr>
-      <tr><td>Depreciation and amortisation</td><td>R261</td></tr>
-      <tr><td>Increase in accounts receivable</td><td class="neg">(R74,224)</td></tr>
-      <tr><td>Increase in accounts payable</td><td>R449</td></tr>
-      <tr><td>Movement in VAT and rounding</td><td>R0</td></tr>
-      <tr class="total-row"><td>Net Cash Flows from Operating Activities</td><td class="neg">(R57,407)</td></tr>
-      <tr class="section-row"><td colspan="2">INVESTING ACTIVITIES</td></tr>
-      <tr><td>Payment for property, plant and equipment</td><td>R0</td></tr>
-      <tr><td>Decrease in inventory (stock released into sales)</td><td>R30,551</td></tr>
-      <tr class="total-row"><td>Net Cash Flows from Investing Activities</td><td>R30,551</td></tr>
-      <tr class="section-row"><td colspan="2">FINANCING ACTIVITIES</td></tr>
-      <tr><td>Intercompany (Functionalx) inflow</td><td>R12,810</td></tr>
-      <tr class="total-row"><td>Net Cash Flows from Financing Activities</td><td>R12,810</td></tr>
-      <tr class="highlight-row"><td>NET CHANGE IN CASH</td><td class="neg">(R14,045)</td></tr>
-      <tr><td>Cash at beginning of period</td><td>R65,427</td></tr>
-      <tr class="total-row"><td>Cash at end of period</td><td>R51,382</td></tr>
+      <tr class="section-row"><td colspan="3">OPERATING ACTIVITIES</td></tr>
+      <tr><td>Receipts from customers</td><td>R70,112</td><td>R77,113</td></tr>
+      <tr><td>Payments to suppliers and employees</td><td class="neg">(R63,269)</td><td class="neg">(R39,243)</td></tr>
+      <tr class="total-row"><td>Net Cash Flows from Operating Activities</td><td>R6,843</td><td>R37,870</td></tr>
+      <tr class="section-row"><td colspan="3">INVESTING ACTIVITIES</td></tr>
+      <tr><td>Payment for property, plant and equipment</td><td>R0</td><td class="neg">(R1,972)</td></tr>
+      <tr><td>Other cash items from investing activities (stock purchases)</td><td class="neg">(R33,698)</td><td class="neg">(R83,931)</td></tr>
+      <tr class="total-row"><td>Net Cash Flows from Investing Activities</td><td class="neg">(R33,698)</td><td class="neg">(R85,904)</td></tr>
+      <tr class="section-row"><td colspan="3">FINANCING ACTIVITIES</td></tr>
+      <tr><td>Other cash items from financing activities (intercompany and loans)</td><td>R12,810</td><td>R9,949</td></tr>
+      <tr class="total-row"><td>Net Cash Flows from Financing Activities</td><td>R12,810</td><td>R9,949</td></tr>
+      <tr class="highlight-row"><td>NET CHANGE IN CASH</td><td class="neg">(R14,045)</td><td class="neg">(R38,084)</td></tr>
+      <tr><td>Cash at beginning of period</td><td>R65,427</td><td>R103,512</td></tr>
+      <tr class="total-row"><td>Cash at end of period</td><td>R51,382</td><td>R65,427</td></tr>
     </tbody>
   </table>
 </div>
@@ -460,7 +456,7 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
     </tbody>
   </table>
   <div class="sec-hdr"><h2>Cash Position</h2><span class="sec-badge">Liquidity</span></div>
-  <div class="sec-commentary">Closing cash fell to R65,427 from R103,512, a net outflow of R38,085 after including the Amazon settlement account. On the Xero cash flow statement extracted at the time (before that account was added), operating cash flow was positive at R32,734 on receipts of R71,977, outweighed by R85,904 of investing outflows, of which R83,931 related to stock purchased and R1,972 to equipment. Financing contributed a R9,949 inflow. Cash cover is roughly one and a half months of operating expenses, down from two months in June.</div>
+  <div class="sec-commentary">Closing cash fell to R65,427 from R103,512, a net outflow of R38,084. Operating cash flow remained positive at R37,870 on receipts of R77,113, but was outweighed by R85,904 of investing outflows, of which R83,931 related to stock purchased and R1,972 to equipment. Financing contributed a R9,949 inflow. Cash cover is roughly one and a half months of operating expenses, down from two months in June.</div>
   <div class="chart-grid-2">
     <div class="chart-card"><h3>Cash and Bank Balance</h3><div class="chart-sub">Closing balance across all bank accounts at month end (ZAR)</div><canvas id="julyCash"></canvas></div>
     <div class="chart-card"><h3>Net Cash from Operations</h3><div class="chart-sub">Cash generated from trading activities each month (ZAR)</div><canvas id="julyOpCash"></canvas></div>
@@ -574,24 +570,23 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
   </table>
 
   <div class="sec-hdr"><h2>Cash Flow Statement: July 2026</h2><span class="sec-badge">CF</span></div>
-  <div class="sec-commentary">Cash flow statement as extracted from Xero at the time. The Amazon settlement account was subsequently added to the bank section, so the closing cash per the balance sheet above is R65,427.</div>
   <table class="data-table">
     <thead><tr><th>Account</th><th>Jul 2026</th><th>Jun 2026</th></tr></thead>
     <tbody>
       <tr class="section-row"><td colspan="3">OPERATING ACTIVITIES</td></tr>
-      <tr><td>Receipts from customers</td><td>R71,977</td><td>R104,824</td></tr>
+      <tr><td>Receipts from customers</td><td>R77,113</td><td>R104,986</td></tr>
       <tr><td>Payments to suppliers and employees</td><td class="neg">(R39,243)</td><td class="neg">(R38,336)</td></tr>
-      <tr class="total-row"><td>Net Cash Flows from Operating Activities</td><td>R32,734</td><td>R66,488</td></tr>
+      <tr class="total-row"><td>Net Cash Flows from Operating Activities</td><td>R37,870</td><td>R66,650</td></tr>
       <tr class="section-row"><td colspan="3">INVESTING ACTIVITIES</td></tr>
       <tr><td>Payment for property, plant and equipment</td><td class="neg">(R1,972)</td><td>R0</td></tr>
-      <tr><td>Other cash items from investing activities</td><td class="neg">(R83,931)</td><td class="neg">(R27,921)</td></tr>
+      <tr><td>Other cash items from investing activities (stock purchases)</td><td class="neg">(R83,931)</td><td class="neg">(R27,921)</td></tr>
       <tr class="total-row"><td>Net Cash Flows from Investing Activities</td><td class="neg">(R85,904)</td><td class="neg">(R27,921)</td></tr>
       <tr class="section-row"><td colspan="3">FINANCING ACTIVITIES</td></tr>
-      <tr><td>Other cash items from financing activities</td><td>R9,949</td><td>R1,571</td></tr>
+      <tr><td>Other cash items from financing activities (intercompany and loans)</td><td>R9,949</td><td>R1,571</td></tr>
       <tr class="total-row"><td>Net Cash Flows from Financing Activities</td><td>R9,949</td><td>R1,571</td></tr>
-      <tr class="highlight-row"><td>NET CHANGE IN CASH</td><td class="neg">(R43,220)</td><td>R40,138</td></tr>
-      <tr><td>Cash at beginning of period</td><td>R103,403</td><td>R63,265</td></tr>
-      <tr class="total-row"><td>Cash at end of period</td><td>R60,183</td><td>R103,403</td></tr>
+      <tr class="highlight-row"><td>NET CHANGE IN CASH</td><td class="neg">(R38,084)</td><td>R40,300</td></tr>
+      <tr><td>Cash at beginning of period</td><td>R103,512</td><td>R63,212</td></tr>
+      <tr class="total-row"><td>Cash at end of period</td><td>R65,427</td><td>R103,512</td></tr>
     </tbody>
   </table>
 </div>
@@ -651,7 +646,7 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
     </tbody>
   </table>
   <div class="sec-hdr"><h2>Cash Position</h2><span class="sec-badge">Liquidity</span></div>
-  <div class="sec-commentary">Closing cash rose strongly to R103,512 from R63,212, a net inflow of R40,300. Operating cash flow was robust at R66,488, driven by receipts of R104,824 as the May reseller invoices were settled. This was partly offset by R27,921 of investing outflows. Cash now covers roughly two months of operating expenses.</div>
+  <div class="sec-commentary">Closing cash rose strongly to R103,512 from R63,212, a net inflow of R40,300. Operating cash flow was robust at R66,650, driven by receipts of R104,986 as the May reseller invoices were settled. This was partly offset by R27,921 of investing outflows. Cash now covers roughly two months of operating expenses.</div>
   <div class="chart-grid-2">
     <div class="chart-card"><h3>Cash and Bank Balance</h3><div class="chart-sub">Closing balance across all bank accounts at month end (ZAR)</div><canvas id="juneCash"></canvas></div>
     <div class="chart-card"><h3>Net Cash from Operations</h3><div class="chart-sub">Cash generated from trading activities each month (ZAR)</div><canvas id="juneOpCash"></canvas></div>
@@ -764,23 +759,23 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
   </table>
 
   <div class="sec-hdr"><h2>Cash Flow Statement: June 2026</h2><span class="sec-badge">CF</span></div>
-  <div class="sec-commentary">Cash flow statement as extracted from Xero at the time. The Amazon settlement account was subsequently added to the bank section, so the closing cash per the balance sheet above is R103,512.</div>
   <table class="data-table">
     <thead><tr><th>Account</th><th>Jun 2026</th><th>May 2026</th></tr></thead>
     <tbody>
       <tr class="section-row"><td colspan="3">OPERATING ACTIVITIES</td></tr>
-      <tr><td>Receipts from customers</td><td>R104,824</td><td>R72,283</td></tr>
-      <tr><td>Payments to suppliers and employees</td><td class="neg">(R38,336)</td><td class="neg">(R45,202)</td></tr>
-      <tr class="total-row"><td>Net Cash Flows from Operating Activities</td><td>R66,488</td><td>R27,082</td></tr>
+      <tr><td>Receipts from customers</td><td>R104,986</td><td>R69,194</td></tr>
+      <tr><td>Payments to suppliers and employees</td><td class="neg">(R38,336)</td><td class="neg">(R45,201)</td></tr>
+      <tr class="total-row"><td>Net Cash Flows from Operating Activities</td><td>R66,650</td><td>R23,993</td></tr>
       <tr class="section-row"><td colspan="3">INVESTING ACTIVITIES</td></tr>
-      <tr><td>Other cash items from investing activities</td><td class="neg">(R27,921)</td><td>R1</td></tr>
-      <tr class="total-row"><td>Net Cash Flows from Investing Activities</td><td class="neg">(R27,921)</td><td>R1</td></tr>
+      <tr><td>Payment for property, plant and equipment</td><td>R0</td><td>R0</td></tr>
+      <tr><td>Other cash items from investing activities (stock purchases)</td><td class="neg">(R27,921)</td><td>R0</td></tr>
+      <tr class="total-row"><td>Net Cash Flows from Investing Activities</td><td class="neg">(R27,921)</td><td>R0</td></tr>
       <tr class="section-row"><td colspan="3">FINANCING ACTIVITIES</td></tr>
-      <tr><td>Other cash items from financing activities</td><td>R1,571</td><td class="neg">(R19,658)</td></tr>
+      <tr><td>Other cash items from financing activities (intercompany and loans)</td><td>R1,571</td><td class="neg">(R19,658)</td></tr>
       <tr class="total-row"><td>Net Cash Flows from Financing Activities</td><td>R1,571</td><td class="neg">(R19,658)</td></tr>
-      <tr class="highlight-row"><td>NET CHANGE IN CASH</td><td>R40,138</td><td>R7,424</td></tr>
-      <tr><td>Cash at beginning of period</td><td>R63,265</td><td>R55,841</td></tr>
-      <tr class="total-row"><td>Cash at end of period</td><td>R103,403</td><td>R63,265</td></tr>
+      <tr class="highlight-row"><td>NET CHANGE IN CASH</td><td>R40,300</td><td>R4,335</td></tr>
+      <tr><td>Cash at beginning of period</td><td>R63,212</td><td>R58,877</td></tr>
+      <tr class="total-row"><td>Cash at end of period</td><td>R103,512</td><td>R63,212</td></tr>
     </tbody>
   </table>
 </div>
@@ -840,7 +835,7 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
     </tbody>
   </table>
   <div class="sec-hdr"><h2>Cash Position</h2><span class="sec-badge">Liquidity</span></div>
-  <div class="sec-commentary">Closing cash rose to R63,212 from R58,877, a net inflow of R4,335, after a R19,658 intercompany loan repayment. Operating cash flow was R27,082, held back by lower receipts of R72,283 as May reseller invoices remained outstanding at month end. Cash cover is roughly one and a quarter months of operating expenses.</div>
+  <div class="sec-commentary">Closing cash rose to R63,212 from R58,877, a net inflow of R4,335, after a R19,658 intercompany loan repayment. Operating cash flow was R23,993, held back by lower receipts of R69,194 as May reseller invoices remained outstanding at month end. Cash cover is roughly one and a quarter months of operating expenses.</div>
   <div class="chart-grid-2">
     <div class="chart-card"><h3>Cash and Bank Balance</h3><div class="chart-sub">Closing balance across all bank accounts at month end (ZAR)</div><canvas id="mayCash"></canvas></div>
     <div class="chart-card"><h3>Net Cash from Operations</h3><div class="chart-sub">Cash generated from trading activities each month (ZAR)</div><canvas id="mayOpCash"></canvas></div>
@@ -954,23 +949,23 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
   </table>
 
   <div class="sec-hdr"><h2>Cash Flow Statement: May 2026</h2><span class="sec-badge">CF</span></div>
-  <div class="sec-commentary">Cash flow statement as extracted from Xero at the time. The Amazon settlement account was subsequently added to the bank section, so the closing cash per the balance sheet above is R63,212.</div>
   <table class="data-table">
     <thead><tr><th>Account</th><th>May 2026</th><th>Apr 2026</th></tr></thead>
     <tbody>
       <tr class="section-row"><td colspan="3">OPERATING ACTIVITIES</td></tr>
-      <tr><td>Receipts from customers</td><td>R72,283</td><td>R118,174</td></tr>
-      <tr><td>Payments to suppliers and employees</td><td class="neg">(R45,202)</td><td class="neg">(R53,905)</td></tr>
-      <tr class="total-row"><td>Net Cash Flows from Operating Activities</td><td>R27,082</td><td>R64,268</td></tr>
+      <tr><td>Receipts from customers</td><td>R69,194</td><td>R119,552</td></tr>
+      <tr><td>Payments to suppliers and employees</td><td class="neg">(R45,201)</td><td class="neg">(R53,905)</td></tr>
+      <tr class="total-row"><td>Net Cash Flows from Operating Activities</td><td>R23,993</td><td>R65,647</td></tr>
       <tr class="section-row"><td colspan="3">INVESTING ACTIVITIES</td></tr>
-      <tr><td>Other cash items from investing activities</td><td>R1</td><td class="neg">(R1,729)</td></tr>
-      <tr class="total-row"><td>Net Cash Flows from Investing Activities</td><td>R1</td><td class="neg">(R1,729)</td></tr>
+      <tr><td>Payment for property, plant and equipment</td><td>R0</td><td>R0</td></tr>
+      <tr><td>Other cash items from investing activities (stock purchases)</td><td>R0</td><td class="neg">(R1,729)</td></tr>
+      <tr class="total-row"><td>Net Cash Flows from Investing Activities</td><td>R0</td><td class="neg">(R1,729)</td></tr>
       <tr class="section-row"><td colspan="3">FINANCING ACTIVITIES</td></tr>
-      <tr><td>Other cash items from financing activities</td><td class="neg">(R19,658)</td><td class="neg">(R60,000)</td></tr>
+      <tr><td>Other cash items from financing activities (intercompany and loans)</td><td class="neg">(R19,658)</td><td class="neg">(R60,000)</td></tr>
       <tr class="total-row"><td>Net Cash Flows from Financing Activities</td><td class="neg">(R19,658)</td><td class="neg">(R60,000)</td></tr>
-      <tr class="highlight-row"><td>NET CHANGE IN CASH</td><td>R7,424</td><td>R2,539</td></tr>
-      <tr><td>Cash at beginning of period</td><td>R55,841</td><td>R53,302</td></tr>
-      <tr class="total-row"><td>Cash at end of period</td><td>R63,265</td><td>R55,841</td></tr>
+      <tr class="highlight-row"><td>NET CHANGE IN CASH</td><td>R4,335</td><td>R3,918</td></tr>
+      <tr><td>Cash at beginning of period</td><td>R58,877</td><td>R54,959</td></tr>
+      <tr class="total-row"><td>Cash at end of period</td><td>R63,212</td><td>R58,877</td></tr>
     </tbody>
   </table>
 </div>
@@ -1030,7 +1025,7 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
     </tbody>
   </table>
   <div class="sec-hdr"><h2>Cash Position</h2><span class="sec-badge">Liquidity</span></div>
-  <div class="sec-commentary">Closing cash edged up to R58,877 from R54,959, a net inflow of R3,918. Operating cash flow was strong at R64,268, offset by a R60,000 financing outflow. Cash cover remains at roughly one month of operating expenses.</div>
+  <div class="sec-commentary">Closing cash edged up to R58,877 from R54,959, a net inflow of R3,918. Operating cash flow was strong at R65,647 on receipts of R119,552, offset by a R60,000 financing outflow and R1,729 of stock purchases. Cash cover remains at roughly one month of operating expenses.</div>
   <div class="chart-grid-2">
     <div class="chart-card"><h3>Cash and Bank Balance</h3><div class="chart-sub">Closing balance across all bank accounts at month end (ZAR)</div><canvas id="aprCash"></canvas></div>
     <div class="chart-card"><h3>Net Cash from Operations</h3><div class="chart-sub">Cash generated from trading activities each month (ZAR)</div><canvas id="aprOpCash"></canvas></div>
@@ -1148,25 +1143,24 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
   </table>
 
   <div class="sec-hdr"><h2>Cash Flow Statement: April 2026</h2><span class="sec-badge">CF</span></div>
-  <div class="sec-commentary">Cash flow statement as extracted from Xero at the time. The Amazon settlement account was subsequently added to the bank section, so the closing cash per the balance sheet above is R58,877.</div>
   <table class="data-table">
     <thead><tr><th>Account</th><th>Apr 2026</th><th>Mar 2026</th></tr></thead>
     <tbody>
       <tr class="section-row"><td colspan="3">OPERATING ACTIVITIES</td></tr>
-      <tr><td>Receipts from customers</td><td>R118,174</td><td>R115,817</td></tr>
-      <tr><td>Payments to suppliers and employees</td><td class="neg">(R53,905)</td><td class="neg">(R66,886)</td></tr>
+      <tr><td>Receipts from customers</td><td>R119,552</td><td>R117,067</td></tr>
+      <tr><td>Payments to suppliers and employees</td><td class="neg">(R53,905)</td><td class="neg">(R66,930)</td></tr>
       <tr><td>Cash receipts from other operating activities</td><td>R0</td><td>R33</td></tr>
-      <tr class="total-row"><td>Net Cash Flows from Operating Activities</td><td>R64,268</td><td>R48,964</td></tr>
+      <tr class="total-row"><td>Net Cash Flows from Operating Activities</td><td>R65,647</td><td>R50,170</td></tr>
       <tr class="section-row"><td colspan="3">INVESTING ACTIVITIES</td></tr>
       <tr><td>Payment for property, plant and equipment</td><td>R0</td><td class="neg">(R4,329)</td></tr>
-      <tr><td>Other cash items from investing activities</td><td class="neg">(R1,729)</td><td class="neg">(R219,802)</td></tr>
+      <tr><td>Other cash items from investing activities (stock purchases)</td><td class="neg">(R1,729)</td><td class="neg">(R219,802)</td></tr>
       <tr class="total-row"><td>Net Cash Flows from Investing Activities</td><td class="neg">(R1,729)</td><td class="neg">(R224,131)</td></tr>
       <tr class="section-row"><td colspan="3">FINANCING ACTIVITIES</td></tr>
-      <tr><td>Other cash items from financing activities</td><td class="neg">(R60,000)</td><td>R80,978</td></tr>
+      <tr><td>Other cash items from financing activities (intercompany and loans)</td><td class="neg">(R60,000)</td><td>R80,978</td></tr>
       <tr class="total-row"><td>Net Cash Flows from Financing Activities</td><td class="neg">(R60,000)</td><td>R80,978</td></tr>
-      <tr class="highlight-row"><td>NET CHANGE IN CASH</td><td>R2,539</td><td class="neg">(R94,189)</td></tr>
-      <tr><td>Cash at beginning of period</td><td>R53,302</td><td>R147,491</td></tr>
-      <tr class="total-row"><td>Cash at end of period</td><td>R55,841</td><td>R53,302</td></tr>
+      <tr class="highlight-row"><td>NET CHANGE IN CASH</td><td>R3,918</td><td class="neg">(R92,983)</td></tr>
+      <tr><td>Cash at beginning of period</td><td>R54,959</td><td>R147,942</td></tr>
+      <tr class="total-row"><td>Cash at end of period</td><td>R58,877</td><td>R54,959</td></tr>
     </tbody>
   </table>
 </div>
@@ -1217,7 +1211,7 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
     </tbody>
   </table>
   <div class="sec-hdr"><h2>Cash Position</h2><span class="sec-badge">Liquidity</span></div>
-  <div class="sec-commentary">Closing cash fell to R54,959 from R147,491, a net outflow of R92,532. Operating cash flow remained positive at R48,964, but R224,131 of investing outflows for the stock build more than absorbed it, partly funded by R80,978 of financing inflows. Cash cover fell to under one month of operating expenses.</div>
+  <div class="sec-commentary">Closing cash fell to R54,959 from R147,942, a net outflow of R92,983. Operating cash flow remained positive at R50,170, but R224,131 of investing outflows for the stock build more than absorbed it, partly funded by R80,978 of financing inflows. Cash cover fell to under one month of operating expenses.</div>
   <div class="chart-grid-2">
     <div class="chart-card"><h3>Cash and Bank Balance</h3><div class="chart-sub">Closing balance across all bank accounts at month end (ZAR)</div><canvas id="marCash"></canvas></div>
     <div class="chart-card"><h3>Net Cash from Operations</h3><div class="chart-sub">Cash generated from trading activities each month (ZAR)</div><canvas id="marOpCash"></canvas></div>
@@ -1331,26 +1325,24 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
   </table>
 
   <div class="sec-hdr"><h2>Cash Flow Statement: March 2026</h2><span class="sec-badge">CF</span></div>
-  <div class="sec-commentary">Cash flow statement as extracted from Xero at the time. The Amazon settlement account was subsequently added to the bank section, so the closing cash per the balance sheet above is R54,959.</div>
   <table class="data-table">
-    <thead><tr><th>Account</th><th>Mar 2026</th><th>Feb 2026</th></tr></thead>
+    <thead><tr><th>Account</th><th>Mar 2026</th></tr></thead>
     <tbody>
-      <tr class="section-row"><td colspan="3">OPERATING ACTIVITIES</td></tr>
-      <tr><td>Receipts from customers</td><td>R115,817</td><td>R127,064</td></tr>
-      <tr><td>Payments to suppliers and employees</td><td class="neg">(R66,886)</td><td class="neg">(R69,742)</td></tr>
-      <tr><td>Cash receipts from other operating activities</td><td>R33</td><td>R0</td></tr>
-      <tr><td>Cash payments from other operating activities</td><td>R0</td><td class="neg">(R114)</td></tr>
-      <tr class="total-row"><td>Net Cash Flows from Operating Activities</td><td>R48,964</td><td>R57,208</td></tr>
-      <tr class="section-row"><td colspan="3">INVESTING ACTIVITIES</td></tr>
-      <tr><td>Payment for property, plant and equipment</td><td class="neg">(R4,329)</td><td>R0</td></tr>
-      <tr><td>Other cash items from investing activities</td><td class="neg">(R219,802)</td><td class="neg">(R124,904)</td></tr>
-      <tr class="total-row"><td>Net Cash Flows from Investing Activities</td><td class="neg">(R224,131)</td><td class="neg">(R124,904)</td></tr>
-      <tr class="section-row"><td colspan="3">FINANCING ACTIVITIES</td></tr>
-      <tr><td>Other cash items from financing activities</td><td>R80,978</td><td class="neg">(R4)</td></tr>
-      <tr class="total-row"><td>Net Cash Flows from Financing Activities</td><td>R80,978</td><td class="neg">(R4)</td></tr>
-      <tr class="highlight-row"><td>NET CHANGE IN CASH</td><td class="neg">(R94,189)</td><td class="neg">(R67,700)</td></tr>
-      <tr><td>Cash at beginning of period</td><td>R147,491</td><td>R215,191</td></tr>
-      <tr class="total-row"><td>Cash at end of period</td><td>R53,302</td><td>R147,491</td></tr>
+      <tr class="section-row"><td colspan="2">OPERATING ACTIVITIES</td></tr>
+      <tr><td>Receipts from customers</td><td>R117,067</td></tr>
+      <tr><td>Payments to suppliers and employees</td><td class="neg">(R66,930)</td></tr>
+      <tr><td>Cash receipts from other operating activities</td><td>R33</td></tr>
+      <tr class="total-row"><td>Net Cash Flows from Operating Activities</td><td>R50,170</td></tr>
+      <tr class="section-row"><td colspan="2">INVESTING ACTIVITIES</td></tr>
+      <tr><td>Payment for property, plant and equipment</td><td class="neg">(R4,329)</td></tr>
+      <tr><td>Other cash items from investing activities (stock purchases)</td><td class="neg">(R219,802)</td></tr>
+      <tr class="total-row"><td>Net Cash Flows from Investing Activities</td><td class="neg">(R224,131)</td></tr>
+      <tr class="section-row"><td colspan="2">FINANCING ACTIVITIES</td></tr>
+      <tr><td>Other cash items from financing activities (intercompany and loans)</td><td>R80,978</td></tr>
+      <tr class="total-row"><td>Net Cash Flows from Financing Activities</td><td>R80,978</td></tr>
+      <tr class="highlight-row"><td>NET CHANGE IN CASH</td><td class="neg">(R92,983)</td></tr>
+      <tr><td>Cash at beginning of period</td><td>R147,942</td></tr>
+      <tr class="total-row"><td>Cash at end of period</td><td>R54,959</td></tr>
     </tbody>
   </table>
 </div>
@@ -1514,7 +1506,7 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
 <script>
 (function(){
   var L = ["Nov '25","Dec '25","Jan '26","Feb '26","Mar '26","Apr '26","May '26","Jun '26","Jul '26","Aug '26"];
-  var REV=[51947, 83417, 353149, 126437, 130170, 100662, 101720, 77519, 79768, 144335], GP=[-2080, 72172, 175635, 62329, 86232, 86824, 86986, 47196, 51238, 76038], NP=[-16728, 36009, 119323, -53690, 23596, 29543, 37603, 2652, 4680, 16108], GPM=[-4, 86.5, 49.7, 49.3, 66.2, 86.3, 85.5, 60.9, 64.2, 52.7], CASH=[70818, 79786, 215191, 147491, 54959, 58877, 63212, 103512, 65427, 51382], OPCASH=[37251, 41206, 287419, 57208, 48964, 64268, 27082, 66488, 32734, -57407];
+  var REV=[51947, 83417, 353149, 126437, 130170, 100662, 101720, 77519, 79768, 144335], GP=[-2080, 72172, 175635, 62329, 86232, 86824, 86986, 47196, 51238, 76038], NP=[-16728, 36009, 119323, -53690, 23596, 29543, 37603, 2652, 4680, 16108], GPM=[-4, 86.5, 49.7, 49.3, 66.2, 86.3, 85.5, 60.9, 64.2, 52.7], CASH=[70818, 79786, 215191, 147491, 54959, 58877, 63212, 103512, 65427, 51382], OPCASH=[37251, 41206, 287419, 57208, 50170, 65647, 23993, 66650, 37870, 6843];
   var CH={"resellers": [26077, 27032, 231050, 27669, 39788, 6522, 32742, 14761, 7714, 79211], "takealot": [0, 17235, 65792, 60974, 58878, 43016, 51166, 53029, 42387, 42761], "payfast": [23233, 34376, 51256, 37089, 28060, 30495, 13495, 5667, 13321, 9632], "yoco": [2287, 4466, 5030, 697, 604, 4835, 2929, 746, 7126, 2882], "amazon": [0, 0, 0, 0, 2832, 3442, 1173, 3316, 9219, 9849], "other": [239, 239, 0, 0, 9, 12352, 215, 0, 0, 0]};
   var INV={"elec": [36763, 36763, -54257, 22417, 150099, 131515, 109870, 85128, 0, 0], "sach": [19150, 31626, 5080, 55363, 113271, 125510, 136755, 136995, 327133, 276496], "box": [30390, 43426, 71465, 71882, 103694, 100241, 96404, 102947, 104573, 136593], "merch": [2111, 2111, 2111, 4589, 16071, 12279, 11985, 11838, 7511, 7188], "other": [34814, 50219, 45722, 44192, 42441, 44158, 44158, 44158, 38334, 26722]};
   var B30=[82, 136, 763, 231, 267, 200, 243, 179, 147, 379], B15=[34, 98, 173, 122, 160, 128, 75, 59, 88, 241], B45=[5.8, 2.6, 5.7, 9.4, 1.0, 0.0, 2.9, 0.0, 2.1, 4.0];
