@@ -238,6 +238,26 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
     <div class="chart-card"><h3>Gross Profit vs Net Profit</h3><div class="chart-sub">After COGS (GP) and after all operating expenses (NP)</div><canvas id="sepGpNp"></canvas></div>
     <div class="chart-card"><h3>GP Margin % by Month</h3><div class="chart-sub">Gross profit as a percentage of revenue each month</div><canvas id="sepGpMargin"></canvas></div>
   </div>
+  <div class="sec-hdr"><h2>Margin per Box</h2><span class="sec-badge">Unit economics</span></div>
+  <div class="sec-commentary">Excluding the R10,269 of courier for moving stock between MJ Labs and Innovation Shrink, September gross margin would have been 72.9% rather than 61.7%. At product level every box earns 76&ndash;78% at full price: a 30-pack costs R101 to produce (R98.70 of sachets at R3.29 each plus R2.69 for the box) and a 15-pack R52. What a box keeps after channel costs depends far more on where it is sold. Amazon is the strongest channel, keeping about 70% of the selling price on both pack sizes because its fees are low, although the R1,831 monthly Amazon subscription is not included in these per-box figures. Takealot's fees of about R100 a unit are the same whatever the pack size, so a 15-pack on Takealot keeps only R87, or 36% of its price, against R226 on a 30-pack. Shopify 15-packs carry R138 of courier per order on a R314 sale. Resellers buy at a deep discount (a 30-pack averaged R243, with Premed lower than the other resellers) but carry no platform fees, so they still keep 58&ndash;63%. Pushing 30-packs rather than 15-packs on Takealot and Shopify, or setting a minimum order value for free delivery, would lift the margin without changing list prices.</div>
+  <div class="chart-grid-2">
+    <div class="chart-card"><h3>Contribution per Box by Channel</h3><div class="chart-sub">Selling price less product cost and channel costs, September 2026 (ZAR)</div><canvas id="sepMarginBox"></canvas></div>
+    <div class="chart-card"><h3>Contribution as % of Price</h3><div class="chart-sub">Share of each sale kept after product and channel costs, September 2026</div><canvas id="sepMarginPct"></canvas></div>
+  </div>
+  <table class="data-table">
+    <thead><tr><th>Product &middot; channel</th><th>Price per box</th><th>Product cost</th><th>Product margin</th><th>Channel costs</th><th>Contribution per box</th><th>% of price</th></tr></thead>
+    <tbody>
+      <tr><td>30-pack &middot; Amazon</td><td>R429</td><td>R101</td><td>76.4%</td><td>R28</td><td>R299</td><td>69.8%</td></tr>
+      <tr><td>30-pack &middot; Shopify</td><td>R458</td><td>R101</td><td>77.9%</td><td>R113</td><td>R244</td><td>53.2%</td></tr>
+      <tr><td>30-pack &middot; Takealot</td><td>R428</td><td>R101</td><td>76.3%</td><td>R100</td><td>R226</td><td>52.9%</td></tr>
+      <tr><td>30-pack &middot; Resellers</td><td>R243</td><td>R101</td><td>58.2%</td><td>&ndash;</td><td>R141</td><td>58.2%</td></tr>
+      <tr><td>15-pack &middot; Amazon</td><td>R239</td><td>R52</td><td>78.2%</td><td>R14</td><td>R173</td><td>72.4%</td></tr>
+      <tr><td>15-pack &middot; Shopify</td><td>R314</td><td>R52</td><td>83.4%</td><td>R130</td><td>R132</td><td>41.9%</td></tr>
+      <tr><td>15-pack &middot; Takealot</td><td>R239</td><td>R52</td><td>78.2%</td><td>R100</td><td>R87</td><td>36.3%</td></tr>
+      <tr><td>15-pack &middot; Resellers</td><td>R142</td><td>R52</td><td>63.3%</td><td>&ndash;</td><td>R90</td><td>63.3%</td></tr>
+      <tr><td>45-pack &middot; Shopify</td><td>R603</td><td>R151</td><td>75.0%</td><td>R106</td><td>R346</td><td>57.5%</td></tr>
+    </tbody>
+  </table>
   <div class="sec-hdr"><h2>Inventory</h2><span class="sec-badge">Stock</span></div>
   <div class="sec-commentary">Total inventory reduced by R23,678 to R423,321. Sachet stock fell R22,097 to R254,399 and merchandise fell R1,409 to R5,780, while boxes were flat at R136,384. No new stock was received into inventory during the month. Xero has restated the August electrolyte and payables balances (see the Balance Sheet note on the Financials tab); the August figures in this chart are shown as originally reported.</div>
   <div class="chart-grid-2">
@@ -271,27 +291,6 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
     <div class="chart-card"><h3>Deliveries by Region</h3><div class="chart-sub">Total Courier Guy deliveries, Nov 2025 to Sep 2026</div><canvas id="sepLocRegion"></canvas></div>
     <div class="chart-card"><h3>Deliveries vs Online Sales</h3><div class="chart-sub">Courier Guy deliveries per month against Payfast and Yoco revenue (ZAR)</div><canvas id="sepLocMonth"></canvas></div>
   </div>
-  <table class="data-table">
-    <thead><tr><th>Region</th><th>Nov &ndash; Feb</th><th>Mar &ndash; May</th><th>Jun &ndash; Aug</th><th>Sep</th><th>Total</th><th>Share</th></tr></thead>
-    <tbody>
-      <tr><td>Western Cape - Cape Town</td><td>93</td><td>62</td><td>15</td><td>21</td><td>191</td><td>30.0%</td></tr>
-      <tr><td>Western Cape - Other</td><td>35</td><td>22</td><td>5</td><td>1</td><td>63</td><td>9.9%</td></tr>
-      <tr><td>Gauteng - Johannesburg</td><td>49</td><td>41</td><td>8</td><td>12</td><td>110</td><td>17.3%</td></tr>
-      <tr><td>Gauteng - Pretoria</td><td>34</td><td>18</td><td>11</td><td>5</td><td>68</td><td>10.7%</td></tr>
-      <tr><td>Gauteng - Other</td><td>35</td><td>7</td><td>2</td><td>1</td><td>45</td><td>7.1%</td></tr>
-      <tr><td>KwaZulu-Natal - Durban</td><td>16</td><td>12</td><td>6</td><td>3</td><td>37</td><td>5.8%</td></tr>
-      <tr><td>KwaZulu-Natal - Other</td><td>8</td><td>11</td><td>0</td><td>2</td><td>21</td><td>3.3%</td></tr>
-      <tr><td>Mpumalanga</td><td>9</td><td>10</td><td>4</td><td>0</td><td>23</td><td>3.6%</td></tr>
-      <tr><td>Eastern Cape</td><td>11</td><td>6</td><td>3</td><td>0</td><td>20</td><td>3.1%</td></tr>
-      <tr><td>North West</td><td>6</td><td>6</td><td>6</td><td>2</td><td>20</td><td>3.1%</td></tr>
-      <tr><td>Free State</td><td>10</td><td>2</td><td>2</td><td>0</td><td>14</td><td>2.2%</td></tr>
-      <tr><td>Northern Cape</td><td>5</td><td>3</td><td>5</td><td>0</td><td>13</td><td>2.0%</td></tr>
-      <tr><td>Limpopo</td><td>6</td><td>1</td><td>0</td><td>0</td><td>7</td><td>1.1%</td></tr>
-      <tr><td>Unallocated</td><td>1</td><td>4</td><td>0</td><td>0</td><td>5</td><td>0.8%</td></tr>
-      <tr class="total-row"><td>TOTAL DELIVERIES</td><td>318</td><td>205</td><td>67</td><td>47</td><td>637</td><td>100.0%</td></tr>
-      <tr><td>Average per month</td><td>80</td><td>68</td><td>22</td><td>47</td><td>58</td><td></td></tr>
-    </tbody>
-  </table>
   <div class="sec-commentary"><strong>What this means for the business.</strong> First, marketing can be targeted: with 75% of direct customers in Cape Town and Gauteng, paid social spend can be weighted to those two metros rather than spread nationally, and the September result suggests the ad spend is converting. Second, the mid-year drop shows the direct customer base was not retained through winter; a reorder or subscription offer to past customers in these two regions is likely to be the cheapest growth available. Third, Gauteng is a large market served entirely by courier from Cape Town; a Gauteng-based reseller or pharmacy partner would cut delivery cost and time for over a third of customers. Finally, customer courier costs (the operating courier and delivery line) were R6,477 in September, about R138 per delivery against about R476 of Payfast revenue per delivery, or roughly 29c of every rand of direct online sales. The separate R10,269 in COGS courier relates to moving stock between MJ Labs and Innovation Shrink, not to customer orders. If direct orders are carrying free delivery, the threshold is worth reviewing against that cost.</div>
 </div>
 
@@ -1793,6 +1792,9 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
         {type:'bar',label:'Deliveries',data:DEL,backgroundColor:C.teal,yAxisID:'y'},
         {type:'line',label:'Payfast + Yoco revenue',data:ONL,borderColor:C.orange,backgroundColor:C.orange,tension:.3,pointRadius:3,yAxisID:'y1'}]},
         options:Object.assign({},baseOpts,{scales:{x:{ticks:{font:{size:9}}},y:{position:'left',ticks:{font:{size:9}},title:{display:true,text:'Deliveries',font:{size:9}}},y1:{position:'right',grid:{drawOnChartArea:false},ticks:{font:{size:9},callback:function(v){return 'R'+(v/1000)+'k';}}}}})});
+      var MCH=['Amazon','Shopify','Takealot','Resellers'];
+      mk('sepMarginBox',{type:'bar',data:{labels:MCH,datasets:[{label:'30-pack',data:[299,244,226,141],backgroundColor:C.teal},{label:'15-pack',data:[173,132,87,90],backgroundColor:C.orange}]},options:Object.assign({},baseOpts,{scales:{x:{ticks:{font:{size:9}}},y:{ticks:{font:{size:9},callback:function(v){return 'R'+v;}}}}})});
+      mk('sepMarginPct',{type:'bar',data:{labels:MCH,datasets:[{label:'30-pack',data:[69.8,53.2,52.9,58.2],backgroundColor:C.teal},{label:'15-pack',data:[72.4,41.9,36.3,63.3],backgroundColor:C.orange}]},options:Object.assign({},baseOpts,{scales:{x:{ticks:{font:{size:9}}},y:{min:0,max:100,ticks:{font:{size:9},callback:function(v){return v+'%';}}}}})});
     }
   }
   function buildAll(){
