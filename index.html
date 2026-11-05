@@ -221,11 +221,11 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
     <div class="kpi-card teal"><div class="kpi-label">Gross Profit</div><div class="kpi-value">R544,838</div><div class="kpi-sub">After all cost of goods</div></div>
     <div class="kpi-card navy"><div class="kpi-label">GP Margin</div><div class="kpi-value">60.7%</div><div class="kpi-sub">61c profit per R1 sold</div></div>
     <div class="kpi-card teal"><div class="kpi-label">Total Inventory</div><div class="kpi-value">R311,191</div><div class="kpi-sub">Balance at 31 Oct 2026</div></div>
-    <div class="kpi-card navy"><div class="kpi-label">Boxes Sold</div><div class="kpi-value">2,997</div><div class="kpi-sub">All channels combined</div></div>
+    <div class="kpi-card navy"><div class="kpi-label">Boxes Sold</div><div class="kpi-value">2,988</div><div class="kpi-sub">All channels combined</div></div>
     <div class="kpi-card teal"><div class="kpi-label">Net Profit</div><div class="kpi-value">R34,452</div><div class="kpi-sub">Ties to current year earnings</div></div>
   </div>
   <div class="sec-hdr"><h2>Revenue</h2><span class="sec-badge">Sales</span></div>
-  <div class="sec-commentary">October revenue of R170,877 was R79,002 (86%) ahead of September and the best month since January, with every main channel growing. Takealot rose 73% to R61,851, its best month since January, and Payfast (Shopify checkout) almost doubled again to R43,957. Amazon set a new high of R15,364, and resellers contributed R34,318, including a new R18,937 order from Sea Point Spar. Three new revenue lines appeared: Stitch at R6,832, Makro at R907 and other sales of R3,633. Boxes sold rose to 502 from 292. GP margin rose to 70.2% from 54.6%. COGS courier and fulfilment fell to R666 from R10,269 (September's charge related to moving purchased stock), other packaging was lower at R1,950, and full-price online and Takealot sales made up most of the month. The month broke even with a net profit of R226 because operating expenses rose R49,944 to R119,773, mainly on marketing. Social media advertising rose to R29,406 from R9,804, and marketing and design (R14,475), graphic design and branding (R4,958) and other advertising (R3,000) took total marketing spend to R51,839, about 30% of revenue. Courier and delivery costs rose R5,851 to R12,328 with the higher online volume.</div>
+  <div class="sec-commentary">October revenue of R170,877 was R79,002 (86%) ahead of September and the best month since January, with every main channel growing. Takealot rose 73% to R61,851, its best month since January, and Payfast (Shopify checkout) almost doubled again to R43,957. Amazon set a new high of R15,364, and resellers contributed R34,318, including a new R18,937 order from Sea Point Spar. Three new revenue lines appeared: Stitch at R6,832, Makro at R907 and other sales of R3,633. Boxes sold rose to 502 from 283. GP margin rose to 70.2% from 54.6%. COGS courier and fulfilment fell to R666 from R10,269 (September's charge related to moving purchased stock), other packaging was lower at R1,950, and full-price online and Takealot sales made up most of the month. The month broke even with a net profit of R226 because operating expenses rose R49,944 to R119,773, mainly on marketing. Social media advertising rose to R29,406 from R9,804, and marketing and design (R14,475), graphic design and branding (R4,958) and other advertising (R3,000) took total marketing spend to R51,839, about 30% of revenue. Courier and delivery costs rose R5,851 to R12,328 with the higher online volume.</div>
   <div class="chart-grid-2">
     <div class="chart-card"><h3>Revenue by Month</h3><div class="chart-sub">Total across all channels (ZAR)</div><canvas id="octRevMonth"></canvas></div>
     <div class="chart-card"><h3>Revenue by Channel</h3><div class="chart-sub">Channel contribution each month (ZAR, stacked)</div><canvas id="octRevChannel"></canvas></div>
@@ -234,6 +234,25 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
     <div class="chart-card"><h3>Gross Profit vs Net Profit</h3><div class="chart-sub">After COGS (GP) and after all operating expenses (NP)</div><canvas id="octGpNp"></canvas></div>
     <div class="chart-card"><h3>GP Margin % by Month</h3><div class="chart-sub">Gross profit as a percentage of revenue each month</div><canvas id="octGpMargin"></canvas></div>
   </div>
+  <div class="sec-hdr"><h2>Margin per Box</h2><span class="sec-badge">Unit economics</span></div>
+  <div class="sec-commentary">Sold at full price, every box earns a product margin of 72&ndash;79%, and about 60% at reseller prices. What it keeps after channel costs depends on where it is sold: about 67&ndash;68% of the selling price on Amazon, 60% through resellers, 58% on 30-packs through Takealot and 45% on 30-packs through Shopify. Takealot improved sharply on September because its R11,654 of fees were spread over 168 units, R69 a unit against R100. Shopify 30-packs kept less than in September (45% against 50%) because the average price fell to R393 from R439, and each order also carries a courier cost of about R143. 15-packs keep less on Takealot and Shopify because fees and courier costs are much the same per order whatever the pack size, so encouraging 30-pack sales on those channels lifts the margin without changing prices.</div>
+  <div class="chart-grid-2">
+    <div class="chart-card"><h3>Contribution per Box by Channel</h3><div class="chart-sub">Selling price less product cost and channel costs, October 2026 (ZAR)</div><canvas id="octMarginBox"></canvas></div>
+    <div class="chart-card"><h3>Contribution as % of Price</h3><div class="chart-sub">Share of each sale kept after product and channel costs, October 2026</div><canvas id="octMarginPct"></canvas></div>
+  </div>
+  <table class="data-table">
+    <thead><tr><th>Product &middot; channel</th><th>Price per box</th><th>Product cost</th><th>Product margin</th><th>Channel costs</th><th>Contribution per box</th><th>% of price</th></tr></thead>
+    <tbody>
+      <tr><td>30-pack &middot; Amazon</td><td>R431</td><td>R110</td><td>74.5%</td><td>R27</td><td>R294</td><td>68.2%</td></tr>
+      <tr><td>30-pack &middot; Shopify</td><td>R393</td><td>R110</td><td>72.0%</td><td>R106</td><td>R177</td><td>45.0%</td></tr>
+      <tr><td>30-pack &middot; Takealot</td><td>R429</td><td>R110</td><td>74.4%</td><td>R69</td><td>R250</td><td>58.2%</td></tr>
+      <tr><td>30-pack &middot; Resellers</td><td>R274</td><td>R110</td><td>59.8%</td><td>&ndash;</td><td>R164</td><td>59.8%</td></tr>
+      <tr><td>15-pack &middot; Amazon</td><td>R239</td><td>R61</td><td>74.5%</td><td>R18</td><td>R160</td><td>67.0%</td></tr>
+      <tr><td>15-pack &middot; Shopify</td><td>R287</td><td>R61</td><td>78.8%</td><td>R114</td><td>R112</td><td>39.0%</td></tr>
+      <tr><td>15-pack &middot; Takealot</td><td>R239</td><td>R61</td><td>74.5%</td><td>R69</td><td>R109</td><td>45.5%</td></tr>
+      <tr><td>15-pack &middot; Resellers</td><td>R153</td><td>R61</td><td>60.0%</td><td>&ndash;</td><td>R92</td><td>60.0%</td></tr>
+    </tbody>
+  </table>
   <div class="sec-hdr"><h2>Inventory</h2><span class="sec-badge">Stock</span></div>
   <div class="sec-commentary">Total inventory fell R45,290 to R311,191 from R356,481. No new electrolyte stock was received, so the higher sales came out of stock on hand. Sachet stock fell R39,342 to R81,973, boxes R3,036 to R94,930 and merchandise R2,912 to R2,868. Electrolytes were unchanged at R104,698.</div>
   <div class="chart-grid-2">
@@ -260,6 +279,12 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
   <div class="chart-grid-2">
     <div class="chart-card"><h3>Cash and Bank Balance</h3><div class="chart-sub">Closing balance across all bank accounts at month end, net of overdraft (ZAR)</div><canvas id="octCash"></canvas></div>
     <div class="chart-card"><h3>Net Cash from Operations</h3><div class="chart-sub">Cash generated from trading activities each month (ZAR)</div><canvas id="octOpCash"></canvas></div>
+  </div>
+  <div class="sec-hdr"><h2>Delivery Footprint</h2><span class="sec-badge">Courier Guy</span></div>
+  <div class="sec-commentary">This section maps every Courier Guy delivery billed in Xero from March to October 2026: 405 deliveries, covering direct online and Yoco orders (Takealot and Amazon fulfil their own deliveries and are not included). The Western Cape accounts for 39% (Cape Town alone 31%) and Gauteng for 35% (Johannesburg 20%, Pretoria 11%), so together they take almost three quarters of all deliveries. KwaZulu-Natal adds 10%, the remaining six provinces together make up 16%, and 1% are unallocated. October had 86 deliveries, the most since February and up from 47 in September, in line with Payfast and Stitch sales almost doubling. Gauteng overtook the Western Cape for the month with 35 deliveries (Johannesburg 21, Pretoria 12) against 30 (Cape Town 27), and Limpopo had four.</div>
+  <div class="chart-grid-2">
+    <div class="chart-card"><h3>Deliveries by Region</h3><div class="chart-sub">Total Courier Guy deliveries, Mar to Oct 2026</div><canvas id="octLocRegion"></canvas></div>
+    <div class="chart-card"><h3>Deliveries vs Online Sales</h3><div class="chart-sub">Courier Guy deliveries per month against Payfast and Yoco revenue (ZAR)</div><canvas id="octLocMonth"></canvas></div>
   </div>
 </div>
 
@@ -417,7 +442,7 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
     <div class="kpi-card teal"><div class="kpi-label">Gross Profit</div><div class="kpi-value">R50,139</div><div class="kpi-sub">After all cost of goods</div></div>
     <div class="kpi-card navy"><div class="kpi-label">GP Margin</div><div class="kpi-value">54.6%</div><div class="kpi-sub">55c profit per R1 sold</div></div>
     <div class="kpi-card teal"><div class="kpi-label">Total Inventory</div><div class="kpi-value">R356,481</div><div class="kpi-sub">September 2026</div></div>
-    <div class="kpi-card navy"><div class="kpi-label">Boxes Sold</div><div class="kpi-value">292</div><div class="kpi-sub">All channels combined</div></div>
+    <div class="kpi-card navy"><div class="kpi-label">Boxes Sold</div><div class="kpi-value">283</div><div class="kpi-sub">All channels combined</div></div>
     <div class="kpi-card teal"><div class="kpi-label">Net Loss</div><div class="kpi-value">(R19,690)</div><div class="kpi-sub">After all expenses</div></div>
   </div>
   <div class="kpi-band-label">Year to date <span>1 March 2026 to 30 Sep 2026 &middot; 7 months</span></div>
@@ -426,7 +451,7 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
     <div class="kpi-card teal"><div class="kpi-label">Gross Profit</div><div class="kpi-value">R424,839</div><div class="kpi-sub">After all cost of goods</div></div>
     <div class="kpi-card navy"><div class="kpi-label">GP Margin</div><div class="kpi-value">58.5%</div><div class="kpi-sub">58c profit per R1 sold</div></div>
     <div class="kpi-card teal"><div class="kpi-label">Total Inventory</div><div class="kpi-value">R356,481</div><div class="kpi-sub">Balance at 30 Sep 2026</div></div>
-    <div class="kpi-card navy"><div class="kpi-label">Boxes Sold</div><div class="kpi-value">2,495</div><div class="kpi-sub">All channels combined</div></div>
+    <div class="kpi-card navy"><div class="kpi-label">Boxes Sold</div><div class="kpi-value">2,486</div><div class="kpi-sub">All channels combined</div></div>
     <div class="kpi-card teal"><div class="kpi-label">Net Profit</div><div class="kpi-value">R34,226</div><div class="kpi-sub">Ties to current year earnings</div></div>
   </div>
   <div class="sec-hdr"><h2>Revenue</h2><span class="sec-badge">Sales</span></div>
@@ -1940,7 +1965,7 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
   var INV={"elec": [36763, 36763, -54257, 22417, 150099, 131515, 109870, 109870, 24742, 24742, 104698, 104698], "sach": [19150, 31626, 5080, 55363, 113271, 108891, 101863, 83829, 194049, 143412, 121315, 81973], "box": [30390, 43426, 71465, 71882, 82485, 77767, 70314, 76857, 78484, 104752, 97966, 94930], "merch": [2111, 2111, 2111, 4589, 16071, 12279, 11985, 11838, 7511, 7188, 5780, 2868], "other": [34814, 50219, 45722, 44192, 42441, 44158, 44158, 44158, 38334, 26722, 26722, 26722]};
   var B30=[82, 136, 763, 231, 267, 200, 243, 179, 147, 379, 198], B15=[34, 98, 173, 122, 160, 128, 75, 59, 88, 241, 94], B45=[5.8, 2.6, 5.7, 9.4, 1.0, 0.0, 2.9, 0.0, 2.1, 4.0, 5.0];
   var TURN=[4.6, 0.9, 18.2, 5.7, 2.6, 1.0, 1.2, 0.9, 1.0, 2.7, 1.5, 1.8], DSI=[79, 389, 20, 64, 141, 373, 296, 424, 357, 134, 242, 200], GMROI=[-0.01, 0.5, 1.5, 0.46, 2.6, 2.1, 2.2, 1.9, 1.8, 2.6, 1.8, 4.3];
-  var BOX=[122, 237, 942, 362, 432, 332, 324, 238, 244, 633, 292, 502];
+  var BOX=[122, 237, 942, 362, 432, 332, 324, 238, 244, 633, 283, 502];
   var C={navy:'#1a3a5c',teal:'#0099aa',dteal:'#007085',orange:'#e07b39',amber:'#f4b942',green:'#2e7d32',red:'#c00000',blue:'#1da1db',purple:'#7e57c2',grey:'#90a4ae'};
   var TABS=[['oct',12],['sep',11],['aug',10],['july',9],['june',8],['may',7],['apr',6],['mar',5]];
   var charts=[], built={};
@@ -1995,6 +2020,21 @@ body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#eef2f7;color:
       var MCH=['Amazon','Shopify','Takealot','Resellers'];
       mk('sepMarginBox',{type:'bar',data:{labels:MCH,datasets:[{label:'30-pack',data:[291,221,218,133],backgroundColor:C.teal},{label:'15-pack',data:[164,123,78,81],backgroundColor:C.orange}]},options:Object.assign({},baseOpts,{scales:{x:{ticks:{font:{size:9}}},y:{ticks:{font:{size:9},callback:function(v){return 'R'+v;}}}}})});
       mk('sepMarginPct',{type:'bar',data:{labels:MCH,datasets:[{label:'30-pack',data:[67.8,50.3,50.9,54.7],backgroundColor:C.teal},{label:'15-pack',data:[68.7,39.1,32.5,57.0],backgroundColor:C.orange}]},options:Object.assign({},baseOpts,{scales:{x:{ticks:{font:{size:9}}},y:{min:0,max:100,ticks:{font:{size:9},callback:function(v){return v+'%';}}}}})});
+    }
+    if(p==='oct'){
+      var LR=['Cape Town','Western Cape other','Johannesburg','Pretoria','Gauteng other','Durban','KZN other','Mpumalanga','Eastern Cape','North West','Free State','Northern Cape','Limpopo','Unallocated'];
+      var LV=[125,31,82,46,12,26,15,17,10,17,6,9,5,4];
+      var LCOL=[C.teal,C.teal,C.navy,C.navy,C.navy,C.orange,C.orange,C.grey,C.grey,C.grey,C.grey,C.grey,C.grey,C.grey];
+      mk('octLocRegion',{type:'bar',data:{labels:LR,datasets:[{label:'Deliveries',data:LV,backgroundColor:LCOL}]},options:Object.assign({},baseOpts,{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{ticks:{font:{size:9}}},y:{ticks:{font:{size:9}}}}})});
+      var DEL=[52,83,92,91,74,67,64,20,29,18,47,86];
+      var ONL=CH.payfast.map(function(v,i){return v+CH.yoco[i];});
+      mk('octLocMonth',{data:{labels:lab,datasets:[
+        {type:'bar',label:'Deliveries',data:sl(DEL,n),backgroundColor:C.teal,yAxisID:'y'},
+        {type:'line',label:'Payfast + Yoco revenue',data:sl(ONL,n),borderColor:C.orange,backgroundColor:C.orange,tension:.3,pointRadius:3,yAxisID:'y1'}]},
+        options:Object.assign({},baseOpts,{scales:{x:{ticks:{font:{size:9}}},y:{position:'left',ticks:{font:{size:9}},title:{display:true,text:'Deliveries',font:{size:9}}},y1:{position:'right',grid:{drawOnChartArea:false},ticks:{font:{size:9},callback:function(v){return 'R'+(v/1000)+'k';}}}}})});
+      var MCH=['Amazon','Shopify','Takealot','Resellers'];
+      mk('octMarginBox',{type:'bar',data:{labels:MCH,datasets:[{label:'30-pack',data:[294,177,250,164],backgroundColor:C.teal},{label:'15-pack',data:[160,112,109,92],backgroundColor:C.orange}]},options:Object.assign({},baseOpts,{scales:{x:{ticks:{font:{size:9}}},y:{ticks:{font:{size:9},callback:function(v){return 'R'+v;}}}}})});
+      mk('octMarginPct',{type:'bar',data:{labels:MCH,datasets:[{label:'30-pack',data:[68.2,45.0,58.2,59.8],backgroundColor:C.teal},{label:'15-pack',data:[67.0,39.0,45.5,60.0],backgroundColor:C.orange}]},options:Object.assign({},baseOpts,{scales:{x:{ticks:{font:{size:9}}},y:{min:0,max:100,ticks:{font:{size:9},callback:function(v){return v+'%';}}}}})});
     }
   }
   function snap(from){
